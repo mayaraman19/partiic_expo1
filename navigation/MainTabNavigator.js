@@ -4,10 +4,11 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
+
+import Home from '../screens/Home'
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import safety from '../screens/safety';
+import Login from '../screens/Login';
+import Safety from '../screens/Safety';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -37,7 +38,24 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const LinksStack = createStackNavigator(
+//the home that we're going to use
+const HomieStack = createStackNavigator(
+  {
+    Homie: Home,
+  },
+  config
+);
+
+HomieStack.navigationOptions = {
+  tabBarLabel: 'Home',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  ),
+};
+
+HomieStack.path = '';
+
+/*const LinksStack = createStackNavigator(
   {
     Links: LinksScreen,
   },
@@ -68,10 +86,27 @@ SettingsStack.navigationOptions = {
 };
 
 SettingsStack.path = '';
+*/
+
+const LoginStack = createStackNavigator(
+  {
+    LoginS: Login,
+  },
+  config
+);
+
+LoginStack.navigationOptions = {
+  tabBarLabel: 'Login',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+  ),
+};
+
+LoginStack.path = '';
 
 const SafetyStack = createStackNavigator(
   {
-    Safety: safety,
+    SafetyS: Safety,
   },
   config
 );
@@ -87,8 +122,10 @@ SafetyStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  HomieStack,
+  LoginStack,
+  //LinksStack,
+  //SettingsStack,
   SafetyStack,
 });
 
