@@ -30,8 +30,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import InputField from '../../components/InputField'; 
-import BottomBar from '../../components/BottomBar/BottomBar'; 
+import InputField from '../components/InputField'; 
+//import BottomBar from '../../components/BottomBar/BottomBar'; 
 
 export default function Signup ({navigation}) {
     const pressHandler = () => {

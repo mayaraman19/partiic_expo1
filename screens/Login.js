@@ -35,7 +35,7 @@ import InputField from '../components/InputField';
 
 export default function Login({navigation}) {
     const pressHandler = () => {
-      navigation.navigate('Signup'); 
+      navigation.navigate('Safety'); 
     }
     const gotoEvent = () => {
       navigation.navigate('EventDescription'); 
@@ -63,9 +63,9 @@ export default function Login({navigation}) {
               <Text style={styles.need}>Need an account? 
                 {" "}
               </Text>
-              <TouchableOpacity ><Text
+              <TouchableOpacity onPress={()=>navigation.navigate('SignupS')}><Text
                 style={styles.signup}
-                onPress={pressHandler}
+                
               >
                 Sign up
               </Text></TouchableOpacity>

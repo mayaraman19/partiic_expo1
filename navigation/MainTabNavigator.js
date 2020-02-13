@@ -9,6 +9,7 @@ import Home from '../screens/Home'
 import HomeScreen from '../screens/HomeScreen';
 import Login from '../screens/Login';
 import Safety from '../screens/Safety';
+import Signup from '../screens/Signup';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -91,6 +92,7 @@ SettingsStack.path = '';
 const LoginStack = createStackNavigator(
   {
     LoginS: Login,
+    SignupS: Signup,
   },
   config
 );
@@ -113,12 +115,29 @@ const SafetyStack = createStackNavigator(
 
 SafetyStack.navigationOptions = {
   tabBarLabel: 'Safety',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  ),
+  // tabBarIcon: ({ focused }) => (
+  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+  // ),
 };
 
 SafetyStack.path = '';
+
+// const SignupStack = createStackNavigator(
+//   {
+//     SignupS: Signup,
+//   },
+//   config
+// );
+
+// SignupStack.navigationOptions = {
+//   tabBarLabel: null,
+//   headerMode: 'false',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+//   ),
+// };
+
+// SignupStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
@@ -130,5 +149,11 @@ const tabNavigator = createBottomTabNavigator({
 });
 
 tabNavigator.path = '';
+
+/*const TotalStack = createStackNavigator({ 
+  tabNavigator,
+});
+
+TotalStack.path = '';*/
 
 export default tabNavigator;
