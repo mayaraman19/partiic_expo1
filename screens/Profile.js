@@ -33,9 +33,9 @@ import {
 
 import InputField from '../components/InputField'; 
 
-export default function Login({navigation}) {
+export default function ProfileScreen({navigation}) {
     const pressHandler = () => {
-      navigation.navigate('ProfileS'); 
+      navigation.navigate('Safety'); 
     }
     
     // render() {
@@ -48,11 +48,11 @@ export default function Login({navigation}) {
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}>
-              <Text style={styles.sectionTitle}>PARTIIC</Text>
-              <InputField labelText=' Username: ' />
-              <InputField labelText=' Password: ' password={true}/>
+              <Text style={styles.sectionTitle}>PROFILE</Text>
+              <InputField labelText=' asdfkjlk: ' />
+              <InputField labelText=' asdflkj: ' password={true}/>
               <TouchableOpacity 
-              style={styles.loginButton} onPress={()=>navigation.navigate('ProfileS')}>
+              style={styles.loginButton} onPress={()=>navigation.navigate('SafetyS')}>
                 <Text style={styles.loginText}>Log In</Text>
               </TouchableOpacity>
             

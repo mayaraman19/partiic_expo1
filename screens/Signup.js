@@ -54,7 +54,7 @@ export default function Signup ({navigation}) {
               {/* <Picker selectedValue="stuff" style={{ height: 60, color: 'white'}}>
                   <Picker.Item label='item' value='oh'/>
               </Picker> */}
-              <TouchableOpacity 
+              <TouchableOpacity onPress={()=>navigation.navigate('ProfileS')}
               style={styles.loginButton}>
                 <Text style={styles.loginText}>Sign Up</Text>
               </TouchableOpacity>
@@ -64,12 +64,10 @@ export default function Signup ({navigation}) {
               <Text style={styles.need} >Already have an account? 
                 {" "}
               </Text>
-              <TouchableOpacity 
+              <TouchableOpacity onPress={()=>navigation.navigate('LoginS')}
             //   style={styles.loginButton}
               >
-                <Text onPress={pressHandler}
-                style={styles.login} 
-                >Login</Text>
+                <Text style={styles.login}>Login</Text>
               </TouchableOpacity>
             {/* </Text> */}
               
