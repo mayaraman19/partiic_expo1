@@ -12,6 +12,7 @@ import Safety from '../screens/Safety';
 import Signup from '../screens/Signup';
 import ProfileScreen from '../screens/Profile';
 import Map from '../screens/Map';
+import Report from '../screens/Report';
 
 const config = {headerMode: 'none'};
 
@@ -112,12 +113,30 @@ SafetyStack.navigationOptions = {
 
 SafetyStack.path = '';
 
+//just for now!! to easily navigate and see the page
+const ReportStack = createStackNavigator(
+  {
+    ReportS: Report,
+  },
+  config
+);
+
+ReportStack.navigationOptions = {
+  tabBarLabel: 'ReportTEMP',
+  // tabBarIcon: ({ focused }) => (
+  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+  // ),
+};
+
+ReportStack.path = '';
+
 const tabNavigator = createBottomTabNavigator({
   //LeftStack,
   //HomeStack,
   Profile,
   MapStack,
   SafetyStack,
+  ReportStack,
 });
 
 tabNavigator.path = '';

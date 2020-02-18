@@ -29,7 +29,7 @@ export default function Safety() {
                     UCPD
                 </Text>
             </TouchableOpacity>
-            {/*<TouchableOpacity style = {styles.button}>
+            <TouchableOpacity style = {styles.button}>
                 <Text style = {styles.buttonText}>
                     UCPD Anonymous
                 </Text>
@@ -38,7 +38,7 @@ export default function Safety() {
                 <Text style = {styles.buttonText}>
                     Evening Escort Service
                 </Text>
-        </TouchableOpacity>*/}
+        </TouchableOpacity>
         </View>
     );
 }
@@ -82,11 +82,10 @@ const styles = StyleSheet.create({
     button: {
         alignItems: 'center',
         justifyContent: 'center',
-        position: 'absolute',
         width: 340,
         height: 55,
-        top: 260,
-        bottom: 100,
+        top: 150,
+        //bottom: 100,
 
         backgroundColor: '#19DAD4',
         borderRadius: 11,
