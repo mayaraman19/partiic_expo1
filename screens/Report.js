@@ -49,8 +49,25 @@ export default function Report({navigation}) {
                         Option 2
                     </Text>
                 </TouchableOpacity>
-                <InputField labelText="My reason isn't listed..." 
-                    style = {styles.input}/>
+                <TextInput
+                    style={styles.input}
+                    placeholder="My reason isn't listed..."
+                />
+                <TouchableOpacity style = {styles.submitButton}>
+                    <Text style = {{color: '#fff', fontSize: 18, 
+                            margin: 'auto',}}>
+                        Submit
+                    </Text>
+                </TouchableOpacity>
+                <View style = {styles.finalView}>
+                    <Text style = {{fontSize: 20}}>
+                        Thank you for sending in a report.
+                         ParTiiC takes reports very seriously, 
+                         and will take appropriate measures to 
+                         ensure the safety of our users.
+                    </Text>
+                </View>
+
                 
 
             </View>
@@ -132,12 +149,33 @@ const styles = StyleSheet.create({
     },
     input: {
         width: '89%',
-        height: 200,
+        height: 150,
+        padding: 0,
         backgroundColor: '#ffffff',
         borderRadius: 11,
         left: 24,
-        padding: 30,
-
+        opacity: 1.0,
+        marginBottom: 30,
     },
+    submitButton: {
+        backgroundColor: '#19DAD4',
+        borderRadius: 11,
+        width: 89,
+        height: 36,
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 30,
+    },
+    finalView: {
+        width: '89%',
+        height: 123,
+        left: 24,
+        borderRadius: 5,
+        backgroundColor: '#CDCDCD',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 10,
+    }
 
 });
