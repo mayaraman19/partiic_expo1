@@ -13,6 +13,7 @@ import Signup from '../screens/Signup';
 import ProfileScreen from '../screens/Profile';
 import Map from '../screens/Map';
 import Report from '../screens/Report';
+import Party from '../screens/Party';
 
 const config = {headerMode: 'none'};
 
@@ -84,6 +85,7 @@ Profile.path = '';
 const MapStack = createStackNavigator(
   {
     MapS: Map,
+    PartyScreen: Party,
   },
   config
 );
