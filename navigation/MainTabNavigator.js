@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import {createSwitchNavigator} from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -137,7 +137,20 @@ const tabNavigator = createBottomTabNavigator({
   MapStack,
   SafetyStack,
   ReportStack,
-});
+},
+{
+  tabBarOptions: {
+    style: {
+      backgroundColor: '#75F6F2',
+      color: 'red',
+    },
+
+    paddingVertical: '0%',
+    activeBackgroundColor: '#19DAD4',
+
+  }
+}
+);
 
 tabNavigator.path = '';
 
