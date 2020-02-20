@@ -104,8 +104,9 @@ const styles = StyleSheet.create({
     loginText: {
       fontSize: 18, 
       paddingTop: 12,
-      textAlign: "center"
-      // color: "blue"
+      textAlign: "center",
+      color: "white", 
+      fontWeight: "bold"
     },
     login: {
         color: "#75F6F2", 
@@ -117,11 +118,11 @@ const styles = StyleSheet.create({
       },
     loginButton: {
       borderRadius: 11, 
-      marginTop: 10,
+      marginTop: 30,
       paddingTop: 1,
       paddingBottom: 5, 
       fontSize: 18, 
-      backgroundColor: 'white', 
+      backgroundColor: '#19DAD4', 
       height: 50, 
       textAlign: "center",
     },
