@@ -27,11 +27,10 @@ import {
 import InputField from '../components/InputField'; 
 
 export default function Report({navigation}) {
-    var data = ["dangerous", "boring", "cops", "ppl"];
     return (
         <View style = {styles.background}>
-            <View style = {styles.titleView}>
-                <Text style = {styles.headerFont}>
+            <View style = {styles.header}>
+                <Text style = {styles.headerText}>
                     ORGANIZATION'S FUNDRAGER
                 </Text>
                 <Text style = {styles.title}>
@@ -83,7 +82,23 @@ const styles = StyleSheet.create({
         flex: 1,
         //alignItems: 'center',
     },
-    titleView: {
+    header: {
+        backgroundColor: '#000000',
+        height: 130,
+        width: '100%',
+        marginBottom: 30,
+        alignItems: 'center',
+        shadowOffset:{  width: 2,  height: 10,  },
+        shadowColor: 'black',
+        shadowOpacity: 1.0,
+    },
+    headerText: {
+        fontSize: 28,
+        fontStyle: 'italic',
+        color: 'white',
+        paddingVertical: 60,
+    },
+    /*titleView: {
         justifyContent: "space-between",
         display: "flex", 
         flexDirection: "column",
@@ -103,15 +118,14 @@ const styles = StyleSheet.create({
         fontSize: 30,
 
         color: '#FFFFFF',
-    },
+    },*/
 
     title: {
         //position: 'absolute',
-        left: 24,
         // right: 0,
-        top: 120,
+        //top: 120,
         // bottom: 83,
-        //marginTop: 25,
+        marginTop: 40,
 
         fontStyle: 'normal',
         fontWeight: '400',
@@ -120,16 +134,13 @@ const styles = StyleSheet.create({
 
         color: '#FFFFFF',
 
-        opacity: 0.9,
-        marginBottom: 30,
-
     },
     contentView: {
         justifyContent: "space-between",
         display: "flex", 
         alignItems: 'flex-start',
         flexDirection: "column",
-        top: 120,
+        top: 60,
     },
     button: {
         backgroundColor: 'white',
