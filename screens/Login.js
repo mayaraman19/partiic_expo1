@@ -19,6 +19,7 @@ import {
   KeyboardAvoidingView, 
   Button, 
   TouchableOpacity, 
+  Image,
   Linking, 
   TextInput
 } from 'react-native';
@@ -31,7 +32,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import InputField from '../components/InputField'; 
+import LoginInputField from '../components/LoginInputField'; 
 
 export default function Login({navigation}) {
     const pressHandler = () => {
@@ -44,18 +45,23 @@ export default function Login({navigation}) {
         <>
         <KeyboardAvoidingView style={styles.avoidView} behavior="padding">
         {/* <StatusBar barStyle="dark-content" /> */}
-        <SafeAreaView>
+        {/* <SafeAreaView> */}
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}>
-              <Text style={styles.sectionTitle}>PARTIIC</Text>
-              <InputField labelText=' Username: ' />
-              <InputField labelText=' Password: ' password={true}/>
-              <TouchableOpacity 
-              style={styles.loginButton} onPress={()=>navigation.navigate('ProfileS')}>
-                <Text style={styles.loginText}>Log In</Text>
-              </TouchableOpacity>
-            
+              {/* <Text style={styles.sectionTitle}>PARTIIC</Text> */}
+              <Image style={{borderColor: "white", borderWidth: 1}} source={require('../components/icons/ParTiiC.png')} />
+              <View style={styles.input}>
+                <Text style={styles.label}>Username </Text>
+                <LoginInputField labelText=' Username: ' />
+                <Text style={styles.label}>Password </Text>
+                <LoginInputField labelText=' Password: ' password={true}/>
+                <TouchableOpacity 
+                style={styles.loginButton} onPress={()=>navigation.navigate('ProfileS')}>
+                  <Text style={styles.loginText}>Log In</Text>
+                </TouchableOpacity>
+              </View>
+
             <View style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
               <Text style={styles.need}>Need an account? 
                 {" "}
@@ -69,82 +75,46 @@ export default function Login({navigation}) {
              </View> 
                
           </ScrollView>
-        </SafeAreaView>
+        {/* </SafeAreaView> */}
         </KeyboardAvoidingView>
       </>
       );
     //}
   }
 
-
-// export default class Login extends Component {
-// //   static navigationOptions = {
-// //     title:'Login',
-// // };
-//   const pressHandler = () => {
-
-//   }
-  
-//   render() {
-//     // const navigation = useNavigation();
-//     return (
-//       <>
-//       <KeyboardAvoidingView style={styles.avoidView} behavior="padding">
-//       {/* <StatusBar barStyle="dark-content" /> */}
-//       <SafeAreaView>
-//         <ScrollView
-//           contentInsetAdjustmentBehavior="automatic"
-//           style={styles.scrollView}>
-//             <Text style={styles.sectionTitle}>PARTIIC</Text>
-//             <InputField labelText=' Username: ' />
-//             <InputField labelText=' Password: ' password={true}/>
-//             <TouchableOpacity 
-//             style={styles.loginButton}>
-//               <Text style={styles.loginText}>Log In</Text>
-//             </TouchableOpacity>
-          
-//           <View style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
-//             <Text style={styles.need}>Need an account? 
-//               {" "}
-//             </Text>
-//             <TouchableOpacity ><Text
-//               style={styles.signup}
-//               onPress={() => this.props.navigation.navigate('Signup')}
-//             >
-//               Sign up
-//             </Text></TouchableOpacity>
-//            </View> 
-             
-//         </ScrollView>
-//       </SafeAreaView>
-//       </KeyboardAvoidingView>
-//     </>
-//     );
-//   }
-// }
-
 const styles = StyleSheet.create({
   avoidView: {
-    paddingLeft: 30,
-    paddingRight: 30,
-    paddingTop: 300,
+    // paddingLeft: 30,
+    // paddingRight: 30,
+    // paddingTop: 300,
     flex:1, 
-    backgroundColor: "#050A39"
+    backgroundColor: "black"
    },
   loginText: {
     fontSize: 18, 
     paddingTop: 12,
-    textAlign: "center"
+    textAlign: "center", 
+    color: "white", 
+    fontWeight: "bold", 
     // color: "blue"
+  },
+  input:{
+    paddingHorizontal: 30, 
+  },
+  label: {
+    // padding: 10, 
+    paddingTop: 10, 
+    paddingLeft: 10, 
+    color: "white", 
   },
   loginButton: {
     borderRadius: 11, 
-    marginTop: 10,
+    marginTop: 30,
     paddingTop: 1,
     paddingBottom: 5, 
     fontSize: 18, 
     height: 18,
-    backgroundColor: 'white', 
+    backgroundColor: '#19DAD4', 
     height: 50, 
     textAlign: "center",
   },
@@ -186,22 +156,5 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: "white",
     textAlign: "center"
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
   },
 });

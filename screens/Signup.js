@@ -18,6 +18,7 @@ import {
     KeyboardAvoidingView, 
     Button, 
     TouchableOpacity, 
+    Image, 
     Linking, 
     Picker, 
   } from 'react-native';
@@ -30,7 +31,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import InputField from '../components/InputField'; 
+import LoginInputField from '../components/LoginInputField'; 
 //import BottomBar from '../../components/BottomBar/BottomBar'; 
 
 export default function Signup ({navigation}) {
@@ -47,23 +48,28 @@ export default function Signup ({navigation}) {
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}>
-              <Text style={styles.sectionTitle}>PARTIIIC</Text>
-              <InputField labelText=' Username: ' />
-              <InputField labelText=' Password: ' password={true}/>
-              <InputField labelText=' Email: ' />
-              {/* <Picker selectedValue="stuff" style={{ height: 60, color: 'white'}}>
-                  <Picker.Item label='item' value='oh'/>
-              </Picker> */}
-              <TouchableOpacity onPress={()=>navigation.navigate('ProfileS')}
-              style={styles.loginButton}>
-                <Text style={styles.loginText}>Sign Up</Text>
-              </TouchableOpacity>
-
+              <Image style={{borderColor: "white", borderWidth: 1}} source={require('../components/icons/ParTiiC.png')} />
+              {/* <Text style={styles.sectionTitle}>PARTIIIC</Text> */}
+              <View style={styles.input}>
+              <Text style={styles.label}>Username </Text>
+                <LoginInputField labelText=' Username: ' />
+                <Text style={styles.label}>Password </Text>
+                <LoginInputField labelText=' Password: ' password={true}/>
+                <Text style={styles.label}>Email </Text>
+                <LoginInputField labelText=' Email: ' />
+                {/* <Picker selectedValue="stuff" style={{ height: 60, color: 'white'}}>
+                    <Picker.Item label='item' value='oh'/>
+                </Picker> */}
+                <TouchableOpacity onPress={()=>navigation.navigate('ProfileS')}
+                style={styles.loginButton}>
+                  <Text style={styles.loginText}>Sign Up</Text>
+                </TouchableOpacity>
+              </View>
 
               {/* <Text style={{display: flex, flexDirection: "row"}}> */}
-              <Text style={styles.need} >Already have an account? 
+              {/* <Text style={styles.need} >Already have an account? 
                 {" "}
-              </Text>
+              </Text> */}
               <TouchableOpacity onPress={()=>navigation.navigate('LoginS')}
             //   style={styles.loginButton}
               >
@@ -81,76 +87,42 @@ export default function Signup ({navigation}) {
     //}
   }
 
-// export default class Signup extends React.Component {
-//   render() {
-//     return (
-//       <>
-//       <>
-//       <KeyboardAvoidingView style={styles.avoidView} behavior="padding">
-//       {/* <StatusBar barStyle="dark-content" /> */}
-//       <SafeAreaView>
-//         <ScrollView
-//           contentInsetAdjustmentBehavior="automatic"
-//           style={styles.scrollView}>
-//             <Text style={styles.sectionTitle}>PARTIIIC</Text>
-//             <InputField labelText=' Username: ' />
-//             <InputField labelText=' Password: ' password={true}/>
-//             <InputField labelText=' Email: ' />
-//             {/* <Picker selectedValue="stuff" style={{ height: 60, color: 'white'}}>
-//                 <Picker.Item label='item' value='oh'/>
-//             </Picker> */}
-//             <TouchableOpacity 
-//             style={styles.loginButton}>
-//               <Text style={styles.loginText}>Sign Up</Text>
-//             </TouchableOpacity>
-//             <Text style={styles.need}>Already have an account? 
-//               {" "}
-//               {/* <Text
-//                 style={{textDecorationLine: 'underline'}}
-//                 onPress={() => this.props.navigation.navigate('Login')}
-//               >
-//                 Log in
-//               </Text> */}
-//             </Text>
-            
-//         </ScrollView>
-//       </SafeAreaView>
-//       </KeyboardAvoidingView>
-//       {/* <BottomBar/> */}
-//     </>
-//     </>
-//     );
-//   }
-// }
 
 const styles = StyleSheet.create({
     avoidView: {
-      paddingLeft: 30,
-      paddingRight: 30,
-      paddingTop: 300,
       flex:1, 
-      backgroundColor: "#050A39"
+      backgroundColor: "black"
+     },
+     input: {
+       paddingHorizontal: 30, 
+     },
+     label: {
+      paddingTop: 10, 
+      paddingLeft: 10, 
+      color: "white",
      },
     loginText: {
       fontSize: 18, 
       paddingTop: 12,
-      textAlign: "center"
-      // color: "blue"
+      textAlign: "center",
+      color: "white", 
+      fontWeight: "bold"
     },
     login: {
         color: "#75F6F2", 
         fontSize: 14, 
         // textAlign: "center", 
         paddingTop: 10, 
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline', 
+        textAlign: "center"
       },
     loginButton: {
       borderRadius: 11, 
-      marginTop: 10,
+      marginTop: 30,
       paddingTop: 1,
       paddingBottom: 5, 
       fontSize: 18, 
-      backgroundColor: 'white', 
+      backgroundColor: '#19DAD4', 
       height: 50, 
       textAlign: "center",
     },

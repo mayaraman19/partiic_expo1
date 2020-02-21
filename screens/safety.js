@@ -53,15 +53,15 @@ const styles = StyleSheet.create({
     policeButton: {
         alignItems: 'center',
         justifyContent: 'center',
-        position: 'absolute',
+        // position: 'absolute',
         width: 340,
         height: 55,
-        top: 156,
+        // top: 156,
         backgroundColor: 'rgba(244, 73, 73, 0.8)',
         borderRadius: 11,
     },
     policeText: {
-        position: 'absolute',
+        // position: 'absolute',
         /*left: 4.8,
         right: 4.53%,
         top: 21.06%,
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
         borderRadius: 11,
     },
     buttonText: {
-        position: 'absolute',
+        // position: 'absolute',
         /*left: 11.2%;
         right: 11.2%;
         top: 44.21%;
