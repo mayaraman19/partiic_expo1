@@ -37,8 +37,8 @@ export default function Party({navigation}) {
                 <Image source={require('../components/icons/venmo.png')} />
                 <Image source={require('../components/icons/venmo.png')} />
                 <Image source={require('../components/icons/venmo.png')} />
-                <Image source={require('../components/icons/venmo.png')} />
-
+                {/* <Image source={require('../components/icons/venmo.png')} /> */}
+                <TouchableOpacity style={styles.report}><Text style={{color: "white"}}>REPORT</Text></TouchableOpacity>
             </View>
         </View>
 
@@ -65,6 +65,14 @@ const styles = StyleSheet.create({
         marginTop: 15, 
         marginHorizontal: 15, 
         borderRadius: 10, 
+
+    }, 
+    report: {
+        backgroundColor: "#F44949", 
+        borderRadius: 10, 
+        marginVertical: 10, 
+        paddingTop: 8, 
+        paddingHorizontal: 15, 
 
     }
 
