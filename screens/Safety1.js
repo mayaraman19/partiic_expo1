@@ -20,6 +20,11 @@ import { AuthSession } from 'expo';
 export default function Safety() {
     return (
         <View style = {styles.background}>
+            <View style = {styles.header}>
+                <Text style = {styles.headerText}>
+                UCLA SAFETY RESOURCES
+                </Text>
+            </View>
             <TouchableOpacity /*key = {index} */ style = {styles.policeButton}
             /*onPress={()=>{this.dialCall(4085477683)}}*/>
                 <Text style = {styles.policeText}>EMERGENCY: 911</Text>
@@ -46,9 +51,24 @@ export default function Safety() {
 const styles = StyleSheet.create({
     background: {
         flex: 1,
-        backgroundColor: '#181818',
+        backgroundColor: '#141516',
         alignItems: 'center',
-        padding: 100,
+    },
+    header: {
+        backgroundColor: '#000000',
+        height: 130,
+        width: '100%',
+        marginBottom: 30,
+        alignItems: 'center',
+        shadowOffset:{  width: 2,  height: 10,  },
+        shadowColor: 'black',
+        shadowOpacity: 1.0,
+    },
+    headerText: {
+        fontSize: 32,
+        fontStyle: 'italic',
+        color: 'white',
+        paddingVertical: 60,
     },
     policeButton: {
         alignItems: 'center',
@@ -56,6 +76,7 @@ const styles = StyleSheet.create({
         // position: 'absolute',
         width: 340,
         height: 55,
+        marginTop: 10,
         // top: 156,
         backgroundColor: 'rgba(244, 73, 73, 0.8)',
         borderRadius: 11,
@@ -84,7 +105,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: 340,
         height: 55,
-        top: 150,
+        top: 40,
         marginBottom: 30,
 
         backgroundColor: '#19DAD4',

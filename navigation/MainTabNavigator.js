@@ -8,12 +8,13 @@ import TabBarIcon from '../components/TabBarIcon';
 
 //import HomeScreen from '../screens/unused_screens/HomeScreen';
 import Login from '../screens/Login';
-import Safety from '../screens/Safety';
+import Safety from '../screens/Safety1';
 import Signup from '../screens/Signup';
 import ProfileScreen from '../screens/Profile';
 import Map from '../screens/Map';
 import Report from '../screens/Report';
 import Party from '../screens/Party';
+import PartyCreate from '../screens/PartyCreate';
 
 const config = {headerMode: 'none'};
 
@@ -132,6 +133,22 @@ ReportStack.navigationOptions = {
 
 ReportStack.path = '';
 
+const PartyCreateStack = createStackNavigator(
+  {
+    PartyCreateS: PartyCreate,
+  },
+  config
+);
+
+PartyCreateStack.navigationOptions = {
+  tabBarLabel: 'Create Party',
+  // tabBarIcon: ({ focused }) => (
+  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+  // ),
+};
+
+PartyCreateStack.path = '';
+
 const tabNavigator = createBottomTabNavigator({
   //LeftStack,
   //HomeStack,
@@ -139,6 +156,7 @@ const tabNavigator = createBottomTabNavigator({
   MapStack,
   SafetyStack,
   ReportStack,
+  PartyCreateStack,
 },
 {
   tabBarOptions: {
