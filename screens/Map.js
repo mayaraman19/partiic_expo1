@@ -17,7 +17,7 @@ import { AuthSession } from 'expo';
     Linking.openURL(phoneNumber);
  };*/
 
-export default function Map() {
+export default function Map({navigation}) {
     return (
         <View style = {styles.background}>
             <Image source={require('../components/pics/map.png')} />
@@ -28,7 +28,7 @@ export default function Map() {
                 <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Free Entry</Text></TouchableOpacity>
             </View>
             <View style = {styles.row}>
-                <TouchableOpacity><Text style = {styles.eventTitle}>1. Fundrager</Text></TouchableOpacity>
+                <TouchableOpacity onPress={(()=>navigation.navigate('PartyScreen'))}><Text style = {styles.eventTitle}>1. Fundrager</Text></TouchableOpacity>
                 <View style = {{width: "20%", flexDirection: "row", justifyContent: "space-evenly"}}>
                     <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>L</Text></TouchableOpacity>
                     <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>F</Text></TouchableOpacity>
