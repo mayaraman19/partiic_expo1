@@ -50,7 +50,13 @@ export default function Login({navigation}) {
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}>
               {/* <Text style={styles.sectionTitle}>PARTIIC</Text> */}
-              <Image style={{borderColor: "white", borderWidth: 1}} source={require('../components/icons/ParTiiC.png')} />
+              <Image 
+              style={{
+                marginTop: 100, 
+                marginBottom: 50, 
+                // borderColor: "white", borderWidth: 1
+              }} 
+              source={require('../components/icons/ParTiiCnewer.png')} />
               <View style={styles.input}>
                 <Text style={styles.label}>Username </Text>
                 <LoginInputField labelText=' Username: ' />
