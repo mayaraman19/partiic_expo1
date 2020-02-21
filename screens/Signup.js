@@ -48,7 +48,7 @@ export default function Signup ({navigation}) {
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}>
-              <Image style={{borderColor: "white", borderWidth: 1}} source={require('../components/icons/ParTiiC.png')} />
+              <Image style={{marginTop: 100, marginBottom: 50}} source={require('../components/icons/ParTiiCnewer.png')} />
               {/* <Text style={styles.sectionTitle}>PARTIIIC</Text> */}
               <View style={styles.input}>
               <Text style={styles.label}>Username </Text>

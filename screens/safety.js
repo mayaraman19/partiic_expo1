@@ -46,7 +46,7 @@ export default function Safety() {
 const styles = StyleSheet.create({
     background: {
         flex: 1,
-        backgroundColor: '#050A39',
+        backgroundColor: '#181818',
         alignItems: 'center',
         padding: 100,
     },
