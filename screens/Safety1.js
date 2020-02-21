@@ -46,7 +46,7 @@ export default function Safety() {
 const styles = StyleSheet.create({
     background: {
         flex: 1,
-        backgroundColor: '#181818',
+        backgroundColor: 'black',
         alignItems: 'center',
         padding: 100,
     },
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: 340,
         height: 55,
-        top: 150,
+        top: 40,
         marginBottom: 30,
 
         backgroundColor: '#19DAD4',

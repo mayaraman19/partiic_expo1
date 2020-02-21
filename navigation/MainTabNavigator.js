@@ -8,7 +8,7 @@ import TabBarIcon from '../components/TabBarIcon';
 
 //import HomeScreen from '../screens/unused_screens/HomeScreen';
 import Login from '../screens/Login';
-import Safety from '../screens/Safety';
+import Safety from '../screens/Safety1';
 import Signup from '../screens/Signup';
 import ProfileScreen from '../screens/Profile';
 import Map from '../screens/Map';
