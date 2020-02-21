@@ -87,6 +87,7 @@ const MapStack = createStackNavigator(
   {
     MapS: Map,
     PartyScreen: Party,
+    ReportS: Report,
   },
   config
 );
@@ -117,21 +118,21 @@ SafetyStack.navigationOptions = {
 SafetyStack.path = '';
 
 //just for now!! to easily navigate and see the page
-const ReportStack = createStackNavigator(
-  {
-    ReportS: Report,
-  },
-  config
-);
+// const ReportStack = createStackNavigator(
+//   {
+//     ReportS: Report,
+//   },
+//   config
+// );
 
-ReportStack.navigationOptions = {
-  tabBarLabel: 'ReportTEMP',
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  // ),
-};
+// ReportStack.navigationOptions = {
+//   tabBarLabel: 'ReportTEMP',
+//   // tabBarIcon: ({ focused }) => (
+//   //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+//   // ),
+// };
 
-ReportStack.path = '';
+// ReportStack.path = '';
 
 const PartyCreateStack = createStackNavigator(
   {
@@ -155,7 +156,7 @@ const tabNavigator = createBottomTabNavigator({
   Profile,
   MapStack,
   SafetyStack,
-  ReportStack,
+  //ReportStack,
   PartyCreateStack,
 },
 {

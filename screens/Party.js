@@ -38,7 +38,7 @@ export default function Party({navigation}) {
                 <Image source={require('../components/icons/venmo.png')} />
                 <Image source={require('../components/icons/venmo.png')} />
                 {/* <Image source={require('../components/icons/venmo.png')} /> */}
-                <TouchableOpacity style={styles.report}><Text style={{color: "white"}}>REPORT</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.report} onPress={(()=>navigation.navigate('ReportS'))}><Text style={{color: "white"}}>REPORT</Text></TouchableOpacity>
             </View>
         </View>
 
