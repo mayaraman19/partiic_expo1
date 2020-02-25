@@ -15,7 +15,7 @@ import Map from '../screens/Map';
 import Report from '../screens/Report';
 import Party from '../screens/Party';
 import PartyCreate from '../screens/PartyCreate';
-
+import CreateProfile from '../screens/CreateProfile'; 
 const config = {headerMode: 'none'};
 
 // const config = Platform.select({
@@ -50,6 +50,7 @@ const Profile = createSwitchNavigator(
   {
     LoginS: Login,
     SignupS: Signup,
+    CrProfS: CreateProfile, 
     ProfileS: ProfileScreen,
   },
   config
@@ -57,7 +58,7 @@ const Profile = createSwitchNavigator(
 
 Profile.navigationOptions = ({navigation}) => {
     let tabBarVisible = true;
-    if(navigation.state.index == 0 || navigation.state.index == 1) {
+    if(navigation.state.index == 0 || navigation.state.index == 1 || navigation.state.index == 2) {
       tabBarVisible = false;
     }
     return {
