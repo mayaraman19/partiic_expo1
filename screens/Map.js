@@ -1,4 +1,5 @@
 import React from 'react';
+import MapView from 'react-native-maps';
 import {
   Image,
   Platform,
@@ -7,6 +8,8 @@ import {
   Linking,
   TouchableOpacity,
   View,
+  Dimensions,
+  ScrollView,
 } from 'react-native';
 import { AuthSession } from 'expo';
 
@@ -17,24 +20,33 @@ import { AuthSession } from 'expo';
     Linking.openURL(phoneNumber);
  };*/
 
-export default function Map({navigation}) {
+export default function Map() {
     return (
         <View style = {styles.background}>
-            <Image source={require('../components/pics/map.png')} />
+            {/* <Image source={require('../components/pics/map.png')} /> */}
+            <MapView style={styles.mapStyle} region={{latitude: 34.06, longitude: -118.44, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}/>
             <View style = {styles.row}>
                 <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Parties Today</Text></TouchableOpacity>
                 <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>1 Mile</Text></TouchableOpacity>
                 <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Free Drinks</Text></TouchableOpacity>
                 <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Free Entry</Text></TouchableOpacity>
             </View>
-            <View style = {styles.row}>
-                <TouchableOpacity onPress={(()=>navigation.navigate('PartyScreen'))}><Text style = {styles.eventTitle}>1. Fundrager</Text></TouchableOpacity>
-                <View style = {{width: "20%", flexDirection: "row", justifyContent: "space-evenly"}}>
-                    <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>L</Text></TouchableOpacity>
-                    <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>F</Text></TouchableOpacity>
+            <ScrollView>
+                <View style = {styles.row}>
+                    <TouchableOpacity><Text style = {styles.eventTitle}>1. Fundrager</Text></TouchableOpacity>
+                    <View style = {{width: "20%", flexDirection: "row", justifyContent: "space-evenly"}}>
+                        <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>L</Text></TouchableOpacity>
+                        <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>F</Text></TouchableOpacity>
+                    </View>
                 </View>
-                
-            </View>
+                <View style = {styles.row}>
+                    <TouchableOpacity><Text style = {styles.eventTitle}>1. Fundrager</Text></TouchableOpacity>
+                    <View style = {{width: "20%", flexDirection: "row", justifyContent: "space-evenly"}}>
+                        <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>L</Text></TouchableOpacity>
+                        <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>F</Text></TouchableOpacity>
+                    </View>
+                </View>
+            </ScrollView>
 
         </View>
     );
@@ -46,6 +58,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         alignItems: 'center',
     },
+    mapStyle: {
+        width: Dimensions.get('window').width,
+        height: 350,
+      },
     row: {
         backgroundColor: "red",
         width: "100%",
@@ -67,6 +83,8 @@ const styles = StyleSheet.create({
         padding: 5, 
     },
     eventTitle: {
-        fontWeight: "bold", fontSize: 18, color: "white"
+        fontWeight: "bold", 
+        fontSize: 18, 
+        color: "white"
     }
 });
