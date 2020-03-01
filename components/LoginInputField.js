@@ -13,20 +13,25 @@ class LoginInputField extends Component {
         inputType, 
         textColor, 
         borderColor, 
-        password
+        password, 
+        labelWidth, 
+        keyboardType
     } = this.props;
 
     const inputColor = textColor || Colors.white; 
-    const fontSize = labelTextSize || 24; 
+    const myfontSize = labelTextSize || 18; 
+    const myKeyType = keyboardType || "default"; 
 
     return (
       <View style={styles.wrapper}>
         <TextInput 
         autoCorrect={false}
-        style={[{color:inputColor}, styles.inputField]}
+        style={[{color:inputColor}, {width:labelWidth}, styles.inputField]}
         // secureTextEntry={inputType === 'password'}
         placeholder={labelText}
         secureTextEntry={password}
+        fontSize={myfontSize}
+        keyboardType={myKeyType}
         />
       </View>
     );
@@ -45,9 +50,11 @@ const styles = StyleSheet.create({
     paddingTop: 1,
     paddingLeft: 10, 
     paddingBottom: 5, 
-    fontSize: 18, 
+    // fontSize: 18, 
     // backgroundColor: '#AFAFAF', 
-    height: 30
+    height: 30,
+    margin: 10, 
+    // width: 325, 
   }
 });
 export default LoginInputField;

@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
   },
   input:{
     paddingHorizontal: 30, 
+    alignContent: "center",
   },
   label: {
     // padding: 10, 

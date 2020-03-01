@@ -20,7 +20,8 @@ import {
   Button, 
   TouchableOpacity, 
   Linking, 
-  TextInput
+  TextInput, 
+  ImageBackground
 } from 'react-native';
 
 import {
@@ -44,13 +45,15 @@ export default function ProfileScreen({navigation}) {
         <>
         <KeyboardAvoidingView style={styles.avoidView} behavior="padding">
         {/* <StatusBar barStyle="dark-content" /> */}
-        <SafeAreaView>
+        {/* <SafeAreaView> */}
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}>
+              {/* <ImageBackground source={require('../components/pics/johnsmith.png')}> */}
               <Text style={styles.sectionTitle}>PROFILE</Text> 
+              {/* </ImageBackground> */}
           </ScrollView>
-        </SafeAreaView>
+        {/* </SafeAreaView> */}
         </KeyboardAvoidingView>
       </>
       );

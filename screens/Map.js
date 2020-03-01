@@ -1,5 +1,5 @@
 import React from 'react';
-import MapView from 'react-native-maps';
+import MapView, {Marker, Callout} from 'react-native-maps';
 import {
   Image,
   Platform,
@@ -12,19 +12,24 @@ import {
   ScrollView,
 } from 'react-native';
 import { AuthSession } from 'expo';
+import PartyListItem from '../components/PartyListItem';
 
-/*dialCall = (number) => {
-    let phoneNumber = '';
-    if (Platform.OS === 'android') { phoneNumber = `tel:${number}`; }
-    else {phoneNumber = `telprompt:${number}`; }
-    Linking.openURL(phoneNumber);
- };*/
+// const coordinates={
+//     latitude: 34.06, 
+//     longitude: -118.44
+// }
 
 export default function Map({navigation}) {
     return (
         <View style = {styles.background}>
             {/* <Image source={require('../components/pics/map.png')} /> */}
-            <MapView style={styles.mapStyle} region={{latitude: 34.06, longitude: -118.44, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}/>
+            <MapView style={styles.mapStyle} region={{latitude: 34.06, longitude: -118.44, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}>
+            <Marker coordinate={{latitude: 34.06, longitude: -118.44}} >
+                <Callout>
+                    <Text> HIIIIHIHIHHIH </Text>
+                </Callout>
+            </Marker>
+            </MapView>
             <View style = {styles.row}>
                 <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Parties Today</Text></TouchableOpacity>
                 <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>1 Mile</Text></TouchableOpacity>
@@ -32,20 +37,9 @@ export default function Map({navigation}) {
                 <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Free Entry</Text></TouchableOpacity>
             </View>
             <ScrollView>
-                <View style = {styles.row}>
-                    <TouchableOpacity onPress={()=>navigation.navigate('PartyScreen')}><Text style = {styles.eventTitle}>1. Fundrager</Text></TouchableOpacity>
-                    <View style = {{width: "20%", flexDirection: "row", justifyContent: "space-evenly"}}>
-                        <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>L</Text></TouchableOpacity>
-                        <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>F</Text></TouchableOpacity>
-                    </View>
-                </View>
-                <View style = {styles.row}>
-                    <TouchableOpacity><Text style = {styles.eventTitle}>1. Fundrager</Text></TouchableOpacity>
-                    <View style = {{width: "20%", flexDirection: "row", justifyContent: "space-evenly"}}>
-                        <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>L</Text></TouchableOpacity>
-                        <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>F</Text></TouchableOpacity>
-                    </View>
-                </View>
+                <PartyListItem partyName=";lskfdj;alskfhs;" partyAddress="Gayley" partyDate="date"/>
+                <PartyListItem partyName=";lskfdj;alskfhs;" partyAddress="Gayley" partyDate="date"/>
+                <PartyListItem partyName=";lskfdj;alskfhs;" partyAddress="Gayley" partyDate="date"/>
             </ScrollView>
 
         </View>

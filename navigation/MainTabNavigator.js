@@ -109,6 +109,22 @@ const SafetyStack = createStackNavigator(
   config
 );
 
+const PartyCreateStack = createStackNavigator(
+  {
+    PartyCreateS: PartyCreate,
+  },
+  config
+);
+
+PartyCreateStack.navigationOptions = {
+  tabBarLabel: 'Create Party',
+  // tabBarIcon: ({ focused }) => (
+  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+  // ),
+};
+
+PartyCreateStack.path = '';
+
 SafetyStack.navigationOptions = {
   tabBarLabel: 'Safety',
   // tabBarIcon: ({ focused }) => (
@@ -135,30 +151,17 @@ SafetyStack.path = '';
 
 // ReportStack.path = '';
 
-const PartyCreateStack = createStackNavigator(
-  {
-    PartyCreateS: PartyCreate,
-  },
-  config
-);
 
-PartyCreateStack.navigationOptions = {
-  tabBarLabel: 'Create Party',
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  // ),
-};
-
-PartyCreateStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   //LeftStack,
   //HomeStack,
   Profile,
   MapStack,
+  PartyCreateStack,
   SafetyStack,
   //ReportStack,
-  PartyCreateStack,
+  // PartyCreateStack,
 },
 {
   tabBarOptions: {
