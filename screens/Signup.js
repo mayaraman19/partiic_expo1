@@ -94,11 +94,11 @@ const styles = StyleSheet.create({
       backgroundColor: "black"
      },
      input: {
-       paddingHorizontal: 30, 
+       paddingHorizontal: 10, 
      },
      label: {
       paddingTop: 10, 
-      paddingLeft: 10, 
+      paddingLeft: 20, 
       color: "white",
      },
     loginText: {
@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#19DAD4', 
       height: 50, 
       textAlign: "center",
+      marginHorizontal: 15, 
     },
     need: {
       color: "#75F6F2", 

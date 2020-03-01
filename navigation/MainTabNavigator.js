@@ -16,6 +16,7 @@ import Report from '../screens/Report';
 import Party from '../screens/Party';
 import PartyCreate from '../screens/PartyCreate';
 import CreateProfile from '../screens/CreateProfile'; 
+import MyParties from '../screens/MyParties';
 const config = {headerMode: 'none'};
 
 // const config = Platform.select({
@@ -112,6 +113,7 @@ const SafetyStack = createStackNavigator(
 const PartyCreateStack = createStackNavigator(
   {
     PartyCreateS: PartyCreate,
+    MyPartiesS: MyParties, 
   },
   config
 );
@@ -124,6 +126,16 @@ PartyCreateStack.navigationOptions = {
 };
 
 PartyCreateStack.path = '';
+
+// const MyPartiesStack = createStackNavigator(
+//   {
+//     MyPartiesS: MyParties,
+//   },
+//   config
+// );
+
+// PartyCreateStack.path = '';
+
 
 SafetyStack.navigationOptions = {
   tabBarLabel: 'Safety',
