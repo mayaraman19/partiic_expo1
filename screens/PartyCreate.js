@@ -38,7 +38,7 @@ export default function PartyCreate({navigation}) {
                 <Text style={styles.label}>  Where </Text>
                 <LoginInputField labelText=' Username: ' />
                 <Text style={styles.label}>  Price </Text>
-                <TextInput keyboardType='numeric' style={{borderBottomColor: "white", borderBottomWidth: 1, marginHorizontal:15, fontSize: 20, color: "white", marginTop: 10}}/>
+                <TextInput keyboardType='numeric' style={{borderBottomColor: "white", paddingBottom: 5, borderBottomWidth: 1, marginHorizontal:15, fontSize: 20, color: "white", marginTop: 10}}/>
                 {/* <LoginInputField labelText=' Username: ' myKeyType='numeric'/> */}
                 <Text style={styles.label}>  Venmo Handle </Text>
                 <LoginInputField labelText=' Username: ' />
@@ -55,36 +55,13 @@ export default function PartyCreate({navigation}) {
                 >
                   <Text style={styles.loginText}>CREATE PARTY</Text>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate('MyPartiesS')}>
+                <Text style={styles.login}>Go to my parties</Text>
+              </TouchableOpacity>
                 <Text>{'\n'}</Text>
                 <Text>{'\n'}</Text>
                 
-              </View>
-
-
-
-            {/* <TextInput placeholder='Party Name' style = {styles.input} fontSize={30}></TextInput>
-            <TextInput placeholder = 'when' style = {styles.smallInput}></TextInput>
-            <TextInput placeholder = 'where' style = {styles.smallInput}></TextInput>
-            <Text style = {{fontSize: 20,
-                            color: 'white',
-                            marginTop: 30,
-                            marginLeft: 30,}}>
-                TAGS
-            </Text>
-            <View style = {{flexDirection: 'row'}}>
-                <Text style = {styles.other}>
-                Price:   
-                </Text>
-                <TextInput placeholder = '    ' style = 
-                                    {{borderBottomColor: 'white',
-                                    borderBottomWidth: 3,
-                                    color: 'white',}}>
-
-                </TextInput>
-            </View> */}
-
-
-            
+              </View>            
         </ScrollView>
 
     );
@@ -164,7 +141,7 @@ const styles = StyleSheet.create({
         // color: "blue"
       },
       input:{
-        paddingHorizontal: 30, 
+        paddingHorizontal: 10, 
         alignContent: "center",
       },
       label: {
@@ -183,6 +160,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#19DAD4', 
         height: 50, 
         textAlign: "center",
+        marginHorizontal: 15, 
       },
       tags: {
           borderRadius: 10, 
@@ -197,5 +175,13 @@ const styles = StyleSheet.create({
           padding: 8, 
           fontSize: 15
           
-      }
+      },
+      login: {
+        color: "#75F6F2", 
+        fontSize: 14, 
+        // textAlign: "center", 
+        paddingTop: 10, 
+        textDecorationLine: 'underline', 
+        textAlign: "center"
+      },
 });
