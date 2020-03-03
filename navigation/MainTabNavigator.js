@@ -3,6 +3,7 @@ import { Platform, StyleSheet } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import {createSwitchNavigator} from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { Ionicons, Entypo } from '@expo/vector-icons';
 
 import TabBarIcon from '../components/TabBarIcon';
 
@@ -56,6 +57,7 @@ const Profile = createSwitchNavigator(
 );
 
 Profile.navigationOptions = ({navigation}) => {
+
     let tabBarVisible = true;
     if(navigation.state.index == 0 || navigation.state.index == 1) {
       tabBarVisible = false;
@@ -63,11 +65,28 @@ Profile.navigationOptions = ({navigation}) => {
     return {
       tabBarVisible,
     };
+    
   // if(tabVisible({navigation}) === booleeeen) {
   //   tabBarLabel: 'Profile',
   // },
   //tabBarLabel: 'Profile',
     
+};
+
+Profile.navigationOptions = {
+  tabBarIcon: ({focused}) => (
+    <Ionicons focused = {focused} name = "md-person" size = {40} />
+  ),
+  tabBarOptions: {
+    style: {
+      backgroundColor: '#75F6F2',
+      color: 'red',
+    },
+    paddingVertical: '0%',
+    activeBackgroundColor: '#19DAD4',
+    showIcon: 'true',
+    showLabel: false,
+  },
 };
   // tabBarIcon: ({ focused }) => (
   //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
@@ -97,6 +116,20 @@ MapStack.navigationOptions = {
   // tabBarIcon: ({ focused }) => (
   //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   // ),
+  tabBarIcon: ({focused}) => (
+    <Entypo focused = {focused} name = "location-pin" size = {40} />
+
+  ),
+  tabBarOptions: {
+    style: {
+      backgroundColor: '#75F6F2',
+      color: 'red',
+    },
+    paddingVertical: '0%',
+    activeBackgroundColor: '#19DAD4',
+    showIcon: 'true',
+    showLabel: false,
+  },
 };
 
 MapStack.path = '';
@@ -109,10 +142,23 @@ const SafetyStack = createStackNavigator(
 );
 
 SafetyStack.navigationOptions = {
-  tabBarLabel: 'Safety',
+  //tabBarLabel: 'Safety',
   // tabBarIcon: ({ focused }) => (
   //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   // ),
+  tabBarIcon: ({focused}) => (
+    <Entypo focused ={focused} name = "phone" size = {40}/>
+  ),
+  tabBarOptions: {
+    style: {
+      backgroundColor: '#75F6F2',
+      color: 'red',
+    },
+    paddingVertical: '0%',
+    activeBackgroundColor: '#19DAD4',
+    showIcon: 'true',
+    showLabel: false,
+  },
 };
 
 SafetyStack.path = '';
@@ -146,6 +192,21 @@ PartyCreateStack.navigationOptions = {
   // tabBarIcon: ({ focused }) => (
   //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   // ),
+  tabBarIcon: ({focused}) => (
+    <Entypo focused = {focused} name = "plus" size = {40} />
+
+  ),
+  tabBarOptions: {
+    style: {
+      backgroundColor: '#75F6F2',
+      color: 'red',
+    },
+    paddingVertical: '0%',
+    activeBackgroundColor: '#19DAD4',
+    showIcon: 'true',
+    showLabel: false,
+  },
+  
 };
 
 PartyCreateStack.path = '';
@@ -165,9 +226,10 @@ const tabNavigator = createBottomTabNavigator({
       backgroundColor: '#75F6F2',
       color: 'red',
     },
-
     paddingVertical: '0%',
     activeBackgroundColor: '#19DAD4',
+    showIcon: 'true',
+    showLabel: 'false',
 
   }
 }
