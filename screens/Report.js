@@ -78,7 +78,7 @@ export default function Report({navigation}) {
 
 const styles = StyleSheet.create({
     background: {
-        backgroundColor: '#1e272e',
+        backgroundColor: '#141516',
         flex: 1,
         //alignItems: 'center',
     },

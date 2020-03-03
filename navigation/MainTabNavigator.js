@@ -60,6 +60,7 @@ const Profile = createSwitchNavigator(
 
 Profile.navigationOptions = ({navigation}) => {
 
+  
     let tabBarVisible = true;
     if(navigation.state.index == 0 || navigation.state.index == 1 || navigation.state.index == 2) {
       tabBarVisible = false;
@@ -87,6 +88,7 @@ Profile.navigationOptions = {
     paddingVertical: '0%',
     activeBackgroundColor: '#19DAD4',
     showIcon: 'true',
+    tabBarVisible: Profile.navigationOptions,
     showLabel: false,
   },
 };
@@ -143,32 +145,6 @@ const SafetyStack = createStackNavigator(
   config
 );
 
-const PartyCreateStack = createStackNavigator(
-  {
-    PartyCreateS: PartyCreate,
-    MyPartiesS: MyParties, 
-  },
-  config
-);
-
-PartyCreateStack.navigationOptions = {
-  tabBarLabel: 'Create Party',
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  // ),
-};
-
-PartyCreateStack.path = '';
-
-// const MyPartiesStack = createStackNavigator(
-//   {
-//     MyPartiesS: MyParties,
-//   },
-//   config
-// );
-
-// PartyCreateStack.path = '';
-
 
 SafetyStack.navigationOptions = {
   //tabBarLabel: 'Safety',
@@ -209,7 +185,6 @@ SafetyStack.path = '';
 
 // ReportStack.path = '';
 
-<<<<<<< HEAD
 const PartyCreateStack = createStackNavigator(
   {
     PartyCreateS: PartyCreate,
@@ -238,8 +213,6 @@ PartyCreateStack.navigationOptions = {
   },
   
 };
-=======
->>>>>>> cad99b033af300dd2924725b1419211a46fa4476
 
 
 const tabNavigator = createBottomTabNavigator({
