@@ -57,6 +57,7 @@ export default function Signup ({navigation}) {
                 <LoginInputField labelText=' Password: ' password={true}/>
                 <Text style={styles.label}>Email </Text>
                 <LoginInputField labelText=' Email: ' />
+                <Text style = {styles.warning}> Please use your university email! </Text>
                 {/* <Picker selectedValue="stuff" style={{ height: 60, color: 'white'}}>
                     <Picker.Item label='item' value='oh'/>
                 </Picker> */}
@@ -125,6 +126,12 @@ const styles = StyleSheet.create({
       backgroundColor: '#19DAD4', 
       height: 50, 
       textAlign: "center",
+    },
+    warning: {
+      color: 'white',
+      fontSize: 14,
+      paddingTop: 10, 
+      textAlign: 'center',
     },
     need: {
       color: "#75F6F2", 
