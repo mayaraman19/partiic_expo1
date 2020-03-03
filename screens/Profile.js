@@ -14,6 +14,7 @@ import {
   StyleSheet,
   ScrollView,
   View,
+  Image,
   Text,
   StatusBar,
   KeyboardAvoidingView, 
@@ -42,70 +43,15 @@ export default function ProfileScreen({navigation}) {
     // render() {
       // const navigation = useNavigation();
       return (
-        <>
-        <KeyboardAvoidingView style={styles.avoidView} behavior="padding">
-        {/* <StatusBar barStyle="dark-content" /> */}
-        {/* <SafeAreaView> */}
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={styles.scrollView}>
-              {/* <ImageBackground source={require('../components/pics/johnsmith.png')}> */}
-              <Text style={styles.sectionTitle}>PROFILE</Text> 
-              {/* </ImageBackground> */}
-          </ScrollView>
-        {/* </SafeAreaView> */}
-        </KeyboardAvoidingView>
-      </>
+          <View>
+              <ImageBackground source={require('../components/pics/johnsmith.png')} style={{width: '100%', height: '100%'}}>
+                </ImageBackground>
+          </View>
       );
     //}
   }
 
 
-// export default class Login extends Component {
-// //   static navigationOptions = {
-// //     title:'Login',
-// // };
-//   const pressHandler = () => {
-
-//   }
-  
-//   render() {
-//     // const navigation = useNavigation();
-//     return (
-//       <>
-//       <KeyboardAvoidingView style={styles.avoidView} behavior="padding">
-//       {/* <StatusBar barStyle="dark-content" /> */}
-//       <SafeAreaView>
-//         <ScrollView
-//           contentInsetAdjustmentBehavior="automatic"
-//           style={styles.scrollView}>
-//             <Text style={styles.sectionTitle}>PARTIIC</Text>
-//             <InputField labelText=' Username: ' />
-//             <InputField labelText=' Password: ' password={true}/>
-//             <TouchableOpacity 
-//             style={styles.loginButton}>
-//               <Text style={styles.loginText}>Log In</Text>
-//             </TouchableOpacity>
-          
-//           <View style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
-//             <Text style={styles.need}>Need an account? 
-//               {" "}
-//             </Text>
-//             <TouchableOpacity ><Text
-//               style={styles.signup}
-//               onPress={() => this.props.navigation.navigate('Signup')}
-//             >
-//               Sign up
-//             </Text></TouchableOpacity>
-//            </View> 
-             
-//         </ScrollView>
-//       </SafeAreaView>
-//       </KeyboardAvoidingView>
-//     </>
-//     );
-//   }
-// }
 
 const styles = StyleSheet.create({
   avoidView: {
