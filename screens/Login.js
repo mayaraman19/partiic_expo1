@@ -39,22 +39,16 @@ export default function Login({navigation}) {
       navigation.navigate('ProfileS'); 
     }
     
-    // render() {
-      // const navigation = useNavigation();
       return (
         <>
-        <KeyboardAvoidingView style={styles.avoidView} behavior="padding">
-        {/* <StatusBar barStyle="dark-content" /> */}
-        {/* <SafeAreaView> */}
+        <KeyboardAvoidingView style={styles.avoidView} >
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}>
-              {/* <Text style={styles.sectionTitle}>PARTIIC</Text> */}
               <Image 
               style={{
                 marginTop: 100, 
                 marginBottom: 50, 
-                // borderColor: "white", borderWidth: 1
               }} 
               source={require('../components/icons/ParTiiCnewer.png')} />
               <View style={styles.input}>
@@ -63,7 +57,7 @@ export default function Login({navigation}) {
                 <Text style={styles.label}>Password </Text>
                 <LoginInputField labelText=' Password: ' password={true}/>
                 <TouchableOpacity 
-                style={styles.loginButton} onPress={()=>navigation.navigate('ProfileS')}>
+                style={styles.loginButton} onPress={()=>navigation.navigate('CrProfS')}>
                   <Text style={styles.loginText}>Log In</Text>
                 </TouchableOpacity>
               </View>
@@ -81,18 +75,13 @@ export default function Login({navigation}) {
              </View> 
                
           </ScrollView>
-        {/* </SafeAreaView> */}
         </KeyboardAvoidingView>
       </>
       );
-    //}
   }
 
 const styles = StyleSheet.create({
   avoidView: {
-    // paddingLeft: 30,
-    // paddingRight: 30,
-    // paddingTop: 300,
     flex:1, 
     backgroundColor: "black"
    },
@@ -102,15 +91,14 @@ const styles = StyleSheet.create({
     textAlign: "center", 
     color: "white", 
     fontWeight: "bold", 
-    // color: "blue"
   },
   input:{
-    paddingHorizontal: 30, 
+    paddingHorizontal: 10, 
+    alignContent: "center",
   },
   label: {
-    // padding: 10, 
     paddingTop: 10, 
-    paddingLeft: 10, 
+    paddingLeft: 20, 
     color: "white", 
   },
   loginButton: {
@@ -123,44 +111,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#19DAD4', 
     height: 50, 
     textAlign: "center",
+    marginHorizontal: 15, 
   },
   need: {
     color: "#75F6F2", 
-    fontSize: 14, 
-    // textAlign: "center", 
+    fontSize: 14,  
     paddingTop: 10
   },
   signup: {
     color: "#75F6F2", 
     fontSize: 14, 
-    // textAlign: "center", 
     paddingTop: 10, 
     textDecorationLine: 'underline'
-  },
-  partiic: {
-    fontWeight: 'bold',
-    fontSize: 30, 
-    marginTop: 30, 
-    marginLeft: 50, 
-  }, 
-  // scrollView: {
-  //   backgroundColor: Colors.lighter,
-  // },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: "white",
-    textAlign: "center"
   },
 });

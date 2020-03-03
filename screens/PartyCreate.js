@@ -14,11 +14,11 @@ import {
   TextInput,
 } from 'react-native';
 
-import InputField from '../components/InputField';
+import LoginInputField from '../components/LoginInputField';
 
 export default function PartyCreate({navigation}) {
     return (
-        <View style = {styles.background}>
+        <ScrollView style = {styles.background}>
             <View style = {styles.header}>
                 <Text style = {styles.headerText}>
                     HOST A PARTY
@@ -29,30 +29,40 @@ export default function PartyCreate({navigation}) {
                     Upload Party Image
                 </Text>
             </TouchableOpacity>
-            <TextInput placeholder='Party Name' style = {styles.input}></TextInput>
-            <TextInput placeholder = 'when' style = {styles.smallInput}></TextInput>
-            <TextInput placeholder = 'where' style = {styles.smallInput}></TextInput>
-            <Text style = {{fontSize: 20,
-                            color: 'white',
-                            marginTop: 30,
-                            marginLeft: 30,}}>
-                TAGS
-            </Text>
-            <View style = {{flexDirection: 'row'}}>
-                <Text style = {styles.other}>
-                Price:   
-                </Text>
-                <TextInput placeholder = '    ' style = 
-                                    {{borderBottomColor: 'white',
-                                    borderBottomWidth: 3,
-                                    color: 'white',}}>
+            <Text>{'\n'}</Text>
+            <View style={styles.input}>
+                <Text style={styles.label}>  Party Name </Text>
+                <LoginInputField labelText=' Username: ' />
+                <Text style={styles.label}>  When </Text>
+                <LoginInputField labelText=' Username: ' />
+                <Text style={styles.label}>  Where </Text>
+                <LoginInputField labelText=' Username: ' />
+                <Text style={styles.label}>  Price </Text>
+                <TextInput keyboardType='numeric' style={{borderBottomColor: "white", paddingBottom: 5, borderBottomWidth: 1, marginHorizontal:15, fontSize: 20, color: "white", marginTop: 10}}/>
+                {/* <LoginInputField labelText=' Username: ' myKeyType='numeric'/> */}
+                <Text style={styles.label}>  Venmo Handle </Text>
+                <LoginInputField labelText=' Username: ' />
+                {/* <Text style={styles.label}>  Tags </Text> */}
 
-                </TextInput>
-            </View>
-
-
-            
-        </View>
+                <View style={{display: "flex", flexDirection: "row", justifyContent: "center", marginTop: 10}}>
+                    <TouchableOpacity style={styles.tags}><Text style={styles.tagText}>Drinks</Text></TouchableOpacity>
+                    <TouchableOpacity style={styles.tags}><Text style={styles.tagText}>Guys Allowed</Text></TouchableOpacity>
+                    {/* <TouchableOpacity></TouchableOpacity> */}
+                </View>
+                <TouchableOpacity 
+                style={styles.loginButton} 
+                // onPress={()=>navigation.navigate('CrProfS')}
+                >
+                  <Text style={styles.loginText}>CREATE PARTY</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate('MyPartiesS')}>
+                <Text style={styles.login}>Go to my parties</Text>
+              </TouchableOpacity>
+                <Text>{'\n'}</Text>
+                <Text>{'\n'}</Text>
+                
+              </View>            
+        </ScrollView>
 
     );
 }
@@ -95,16 +105,16 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: 'white',
     },
-    input: {
-        alignSelf: 'flex-start',
-        color: '#141516',
-        fontSize: 32,
-        color: 'white',
-        marginTop: 30,
-        marginLeft: 30,
-        borderBottomColor: 'white',
-        borderBottomWidth: 2,
-    },
+    // input: {
+    //     alignSelf: 'flex-start',
+    //     color: '#141516',
+    //     fontSize: 32,
+    //     color: 'white',
+    //     marginTop: 30,
+    //     marginLeft: 30,
+    //     borderBottomColor: 'white',
+    //     borderBottomWidth: 2,
+    // },
     smallInput: {
         alignSelf: 'flex-start',
         color: '#141516',
@@ -120,6 +130,58 @@ const styles = StyleSheet.create({
         marginLeft: 30,
         fontSize: 16,
         color: 'white',
-    }
+    },
 
+    loginText: {
+        fontSize: 18, 
+        paddingTop: 12,
+        textAlign: "center", 
+        color: "white", 
+        fontWeight: "bold", 
+        // color: "blue"
+      },
+      input:{
+        paddingHorizontal: 10, 
+        alignContent: "center",
+      },
+      label: {
+        // padding: 10, 
+        paddingTop: 10, 
+        paddingLeft: 10, 
+        color: "white", 
+      },
+      loginButton: {
+        borderRadius: 11, 
+        marginTop: 30,
+        paddingTop: 1,
+        paddingBottom: 5, 
+        fontSize: 18, 
+        height: 18,
+        backgroundColor: '#19DAD4', 
+        height: 50, 
+        textAlign: "center",
+        marginHorizontal: 15, 
+      },
+      tags: {
+          borderRadius: 10, 
+          borderWidth: 1, 
+          borderColor: "white", 
+          color: "white", 
+          margin: 5, 
+
+      }, 
+      tagText: {
+          color: "white", 
+          padding: 8, 
+          fontSize: 15
+          
+      },
+      login: {
+        color: "#75F6F2", 
+        fontSize: 14, 
+        // textAlign: "center", 
+        paddingTop: 10, 
+        textDecorationLine: 'underline', 
+        textAlign: "center"
+      },
 });

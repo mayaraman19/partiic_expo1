@@ -34,7 +34,7 @@ import {
 import LoginInputField from '../components/LoginInputField'; 
 //import BottomBar from '../../components/BottomBar/BottomBar'; 
 
-export default function Signup ({navigation}) {
+export default function CreateProfile ({navigation}) {
     const pressHandler = () => {
         navigation.navigate('Login'); 
       }
@@ -45,25 +45,26 @@ export default function Signup ({navigation}) {
         <KeyboardAvoidingView style={styles.avoidView} behavior="padding">
         {/* <StatusBar barStyle="dark-content" /> */}
         <SafeAreaView>
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={styles.scrollView}>
-              <Image style={{marginTop: 100, marginBottom: 50}} source={require('../components/icons/ParTiiCnewer.png')} />
+          
+              {/* <Image style={{marginTop: 100, marginBottom: 50}} source={require('../components/icons/ParTiiCnewer.png')} /> */}
               {/* <Text style={styles.sectionTitle}>PARTIIIC</Text> */}
+              <Text style={{color: "white", fontSize: 24, fontWeight: "bold", padding: 20}}>ABOUT YOU</Text>
+              <TouchableOpacity style={{borderStyle: "dashed", borderColor: "white", borderWidth: 2, width: "80%", height: "30%", alignSelf: "center", borderRadius: 20, marginBottom: 50}}>
+                  <Text style={{color: "white", fontSize: 20, textAlign: "center", paddingTop: 75}}>Upload Image</Text>
+              </TouchableOpacity>
               <View style={styles.input}>
-              <Text style={styles.label}>Username </Text>
+              <Text style={styles.label}>First Name </Text>
                 <LoginInputField labelText=' Username: ' />
-                <Text style={styles.label}>Password </Text>
+                <Text style={styles.label}>Last Name </Text>
                 <LoginInputField labelText=' Password: ' password={true}/>
-                <Text style={styles.label}>Email </Text>
+                <Text style={styles.label}>Organization (optional) </Text>
                 <LoginInputField labelText=' Email: ' />
-                <Text style = {styles.warning}> Please use your university email! </Text>
                 {/* <Picker selectedValue="stuff" style={{ height: 60, color: 'white'}}>
                     <Picker.Item label='item' value='oh'/>
                 </Picker> */}
                 <TouchableOpacity onPress={()=>navigation.navigate('ProfileS')}
                 style={styles.loginButton}>
-                  <Text style={styles.loginText}>Sign Up</Text>
+                  <Text style={styles.loginText}>Create Profile</Text>
                 </TouchableOpacity>
               </View>
 
@@ -71,14 +72,13 @@ export default function Signup ({navigation}) {
               {/* <Text style={styles.need} >Already have an account? 
                 {" "}
               </Text> */}
-              <TouchableOpacity onPress={()=>navigation.navigate('LoginS')}
+              <TouchableOpacity onPress={()=>navigation.navigate('MapS')}
             //   style={styles.loginButton}
               >
-                <Text style={styles.login}>Login</Text>
+                <Text style={styles.login}>I'll do this later...</Text>
               </TouchableOpacity>
             {/* </Text> */}
               
-          </ScrollView>
         </SafeAreaView>
         </KeyboardAvoidingView>
         {/* <BottomBar/> */}
@@ -127,12 +127,6 @@ const styles = StyleSheet.create({
       height: 50, 
       textAlign: "center",
       marginHorizontal: 15, 
-    },
-    warning: {
-      color: 'white',
-      fontSize: 14,
-      paddingTop: 10, 
-      textAlign: 'center',
     },
     need: {
       color: "#75F6F2", 

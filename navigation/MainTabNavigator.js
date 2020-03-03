@@ -16,7 +16,8 @@ import Map from '../screens/Map';
 import Report from '../screens/Report';
 import Party from '../screens/Party';
 import PartyCreate from '../screens/PartyCreate';
-
+import CreateProfile from '../screens/CreateProfile'; 
+import MyParties from '../screens/MyParties';
 const config = {headerMode: 'none'};
 
 // const config = Platform.select({
@@ -51,6 +52,7 @@ const Profile = createSwitchNavigator(
   {
     LoginS: Login,
     SignupS: Signup,
+    CrProfS: CreateProfile, 
     ProfileS: ProfileScreen,
   },
   config
@@ -59,7 +61,7 @@ const Profile = createSwitchNavigator(
 Profile.navigationOptions = ({navigation}) => {
 
     let tabBarVisible = true;
-    if(navigation.state.index == 0 || navigation.state.index == 1) {
+    if(navigation.state.index == 0 || navigation.state.index == 1 || navigation.state.index == 2) {
       tabBarVisible = false;
     }
     return {
@@ -141,6 +143,33 @@ const SafetyStack = createStackNavigator(
   config
 );
 
+const PartyCreateStack = createStackNavigator(
+  {
+    PartyCreateS: PartyCreate,
+    MyPartiesS: MyParties, 
+  },
+  config
+);
+
+PartyCreateStack.navigationOptions = {
+  tabBarLabel: 'Create Party',
+  // tabBarIcon: ({ focused }) => (
+  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+  // ),
+};
+
+PartyCreateStack.path = '';
+
+// const MyPartiesStack = createStackNavigator(
+//   {
+//     MyPartiesS: MyParties,
+//   },
+//   config
+// );
+
+// PartyCreateStack.path = '';
+
+
 SafetyStack.navigationOptions = {
   //tabBarLabel: 'Safety',
   // tabBarIcon: ({ focused }) => (
@@ -180,6 +209,7 @@ SafetyStack.path = '';
 
 // ReportStack.path = '';
 
+<<<<<<< HEAD
 const PartyCreateStack = createStackNavigator(
   {
     PartyCreateS: PartyCreate,
@@ -208,17 +238,19 @@ PartyCreateStack.navigationOptions = {
   },
   
 };
+=======
+>>>>>>> cad99b033af300dd2924725b1419211a46fa4476
 
-PartyCreateStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   //LeftStack,
   //HomeStack,
   Profile,
   MapStack,
+  PartyCreateStack,
   SafetyStack,
   //ReportStack,
-  PartyCreateStack,
+  // PartyCreateStack,
 },
 {
   tabBarOptions: {

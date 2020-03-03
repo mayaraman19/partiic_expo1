@@ -20,7 +20,8 @@ import {
   Button, 
   TouchableOpacity, 
   Linking, 
-  TextInput
+  TextInput, 
+  ImageBackground
 } from 'react-native';
 
 import {
@@ -44,32 +45,15 @@ export default function ProfileScreen({navigation}) {
         <>
         <KeyboardAvoidingView style={styles.avoidView} behavior="padding">
         {/* <StatusBar barStyle="dark-content" /> */}
-        <SafeAreaView>
+        {/* <SafeAreaView> */}
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}>
-              <Text style={styles.sectionTitle}>PROFILE</Text>
-              <InputField labelText=' asdfkjlk: ' />
-              <InputField labelText=' asdflkj: ' password={true}/>
-              <TouchableOpacity 
-              style={styles.loginButton} onPress={()=>navigation.navigate('SafetyS')}>
-                <Text style={styles.loginText}>Log In</Text>
-              </TouchableOpacity>
-            
-            <View style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
-              <Text style={styles.need}>Need an account? 
-                {" "}
-              </Text>
-              <TouchableOpacity onPress={()=>navigation.navigate('SignupS')}><Text
-                style={styles.signup}
-                
-              >
-                Sign up
-              </Text></TouchableOpacity>
-             </View> 
-               
+              {/* <ImageBackground source={require('../components/pics/johnsmith.png')}> */}
+              <Text style={styles.sectionTitle}>PROFILE</Text> 
+              {/* </ImageBackground> */}
           </ScrollView>
-        </SafeAreaView>
+        {/* </SafeAreaView> */}
         </KeyboardAvoidingView>
       </>
       );

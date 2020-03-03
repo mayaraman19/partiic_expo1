@@ -19,24 +19,19 @@ import PartyListItem from '../components/PartyListItem';
 //     longitude: -118.44
 // }
 
-export default function Map({navigation}) {
+export default function MyParties({navigation}) {
     return (
         <View style = {styles.background}>
-            {/* <Image source={require('../components/pics/map.png')} /> */}
-            <MapView style={styles.mapStyle} region={{latitude: 34.06, longitude: -118.44, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}>
-            <Marker coordinate={{latitude: 34.06, longitude: -118.44}} >
-                <Callout>
-                    <Text> HIIIIHIHIHHIH </Text>
-                </Callout>
-            </Marker>
-            </MapView>
-            <View style = {styles.row}>
-                <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Parties Today</Text></TouchableOpacity>
-                <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>1 Mile</Text></TouchableOpacity>
-                <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Free Drinks</Text></TouchableOpacity>
-                <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Free Entry</Text></TouchableOpacity>
-            </View>
             <ScrollView>
+                <Text style={{color: "white", fontSize: 16, paddingLeft: 10}}>Current Listings</Text>
+                <TouchableOpacity 
+                style={styles.loginButton}>
+                  <Text style={styles.loginText}>Edit Listing</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate('PartyCreateS')}>
+                <Text style={styles.login}>Create a new party</Text>
+              </TouchableOpacity>
+                <Text style={{color: "white", fontSize: 16, paddingLeft: 10}}>Past Events</Text>
                 <PartyListItem partyName=";lskfdj;alskfhs;" partyAddress="Gayley" partyDate="date"/>
                 <PartyListItem partyName=";lskfdj;alskfhs;" partyAddress="Gayley" partyDate="date"/>
                 <PartyListItem partyName=";lskfdj;alskfhs;" partyAddress="Gayley" partyDate="date"/>
@@ -51,10 +46,35 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'black',
         alignItems: 'center',
+        paddingTop: 50, 
     },
-    mapStyle: {
-        width: Dimensions.get('window').width,
-        height: 350,
+    login: {
+        color: "#75F6F2", 
+        fontSize: 14, 
+        // textAlign: "center", 
+        paddingTop: 10, 
+        textDecorationLine: 'underline', 
+        textAlign: "center"
+      },
+    loginText: {
+        fontSize: 18, 
+        paddingTop: 12,
+        textAlign: "center", 
+        color: "white", 
+        fontWeight: "bold", 
+      },
+      loginButton: {
+        borderRadius: 11, 
+        marginTop: 30,
+        paddingTop: 1,
+        paddingBottom: 5, 
+        fontSize: 18, 
+        height: 18,
+        backgroundColor: '#19DAD4', 
+        height: 50, 
+        textAlign: "center",
+        marginHorizontal: 15, 
+        marginBottom: 30, 
       },
     row: {
         backgroundColor: "red",
