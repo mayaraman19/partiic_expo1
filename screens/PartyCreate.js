@@ -61,6 +61,11 @@ export default function PartyCreate({navigation}) {
                 <Text>{'\n'}</Text>
                 <Text>{'\n'}</Text>
                 
+                <TouchableOpacity style={{borderWidth: 1, borderColor: "white"}}
+                    onPress={() => Linking.openURL('http://google.com')}>
+                    <Text style={{color: 'white', fontSize: 20}}>Google</Text>
+                </TouchableOpacity>
+                
               </View>            
         </ScrollView>
 

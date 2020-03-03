@@ -57,7 +57,7 @@ export default function Login({navigation}) {
                 <Text style={styles.label}>Password </Text>
                 <LoginInputField labelText=' Password: ' password={true}/>
                 <TouchableOpacity 
-                style={styles.loginButton} onPress={()=>navigation.navigate('CrProfS')}>
+                style={styles.loginButton} onPress={()=>navigation.navigate('MapS')}>
                   <Text style={styles.loginText}>Log In</Text>
                 </TouchableOpacity>
               </View>

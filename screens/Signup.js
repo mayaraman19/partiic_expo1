@@ -55,13 +55,13 @@ export default function Signup ({navigation}) {
                 <LoginInputField labelText=' Username: ' />
                 <Text style={styles.label}>Password </Text>
                 <LoginInputField labelText=' Password: ' password={true}/>
-                <Text style={styles.label}>Email </Text>
+                <Text style={styles.label}>University Email </Text>
                 <LoginInputField labelText=' Email: ' />
                 <Text style = {styles.warning}> Please use your university email! </Text>
                 {/* <Picker selectedValue="stuff" style={{ height: 60, color: 'white'}}>
                     <Picker.Item label='item' value='oh'/>
                 </Picker> */}
-                <TouchableOpacity onPress={()=>navigation.navigate('ProfileS')}
+                <TouchableOpacity onPress={()=>navigation.navigate('CrProfS')}
                 style={styles.loginButton}>
                   <Text style={styles.loginText}>Sign Up</Text>
                 </TouchableOpacity>

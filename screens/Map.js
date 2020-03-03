@@ -13,22 +13,20 @@ import {
 } from 'react-native';
 import { AuthSession } from 'expo';
 import PartyListItem from '../components/PartyListItem';
+import MapPin from '../components/MapPin';
 
-// const coordinates={
-//     latitude: 34.06, 
-//     longitude: -118.44
-// }
 
 export default function Map({navigation}) {
     return (
         <View style = {styles.background}>
             {/* <Image source={require('../components/pics/map.png')} /> */}
             <MapView style={styles.mapStyle} region={{latitude: 34.06, longitude: -118.44, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}>
-            <Marker coordinate={{latitude: 34.06, longitude: -118.44}} >
+            {/* <Marker coordinate={{latitude: 34.06, longitude: -118.44}} >
                 <Callout>
-                    <Text> HIIIIHIHIHHIH </Text>
+                    <Text> hlkjgjhkmb,mnbiglhbm, </Text>
                 </Callout>
-            </Marker>
+            </Marker> */}
+            <MapPin partyName="hello" partyAddress="address" partyDate="insert date here"/>
             </MapView>
             <View style = {styles.row}>
                 <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Parties Today</Text></TouchableOpacity>
