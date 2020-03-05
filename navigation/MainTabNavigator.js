@@ -74,6 +74,7 @@ Profile.navigationOptions =  {
     //tabBarVisible: Profile.navigationOptions,
     showLabel: false,
   },
+  
 };
 
 
@@ -87,13 +88,7 @@ Profile.navigationOptions = ({navigation, focused}) => {
   return {
     tabBarVisible,
     showIcon,
-  };
-  
-// if(tabVisible({navigation}) === booleeeen) {
-//   tabBarLabel: 'Profile',
-// },
-//tabBarLabel: 'Profile',
-  
+  };  
 };
   // tabBarIcon: ({ focused }) => (
   //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
@@ -191,6 +186,7 @@ SafetyStack.path = '';
 const PartyCreateStack = createStackNavigator(
   {
     PartyCreateS: PartyCreate,
+    MyPartiesS: MyParties, 
   },
   config
 );

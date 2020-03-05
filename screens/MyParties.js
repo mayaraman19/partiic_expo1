@@ -10,6 +10,7 @@ import {
   View,
   Dimensions,
   ScrollView,
+  ActivityIndicator
 } from 'react-native';
 import { AuthSession } from 'expo';
 import PartyListItem from '../components/PartyListItem';
@@ -19,27 +20,79 @@ import PartyListItem from '../components/PartyListItem';
 //     longitude: -118.44
 // }
 
-export default function MyParties({navigation}) {
-    return (
-        <View style = {styles.background}>
-            <ScrollView>
-                <Text style={{color: "white", fontSize: 16, paddingLeft: 10}}>Current Listings</Text>
-                <TouchableOpacity 
-                style={styles.loginButton}>
-                  <Text style={styles.loginText}>Edit Listing</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={()=>navigation.navigate('PartyCreateS')}>
-                <Text style={styles.login}>Create a new party</Text>
-              </TouchableOpacity>
-                <Text style={{color: "white", fontSize: 16, paddingLeft: 10}}>Past Events</Text>
-                <PartyListItem partyName=";lskfdj;alskfhs;" partyAddress="Gayley" partyDate="date"/>
-                <PartyListItem partyName=";lskfdj;alskfhs;" partyAddress="Gayley" partyDate="date"/>
-                <PartyListItem partyName=";lskfdj;alskfhs;" partyAddress="Gayley" partyDate="date"/>
-            </ScrollView>
+export default class MyParties extends React.Component {  
+    
+  constructor(props){
+      super(props); 
+      this.state = {
+          isLoading: true, 
+          dataSource: null, 
+      }
+  }
+  
+  componentDidMount(){
 
-        </View>
-    );
+      //return fetch('https://facebook.github.io/react-native/movies.json')
+      return fetch('http://ucla-partic.herokuapp.com/')
+
+          .then( (response) => response.json() )
+          .then( (responseJson) => {
+
+              this.setState(
+                  {
+                      isLoading: false, 
+                      dataSource: responseJson,
+                  }
+              )
+
+          })
+          .catch((error) => {
+              console.log(error)
+          });
+  }
+  
+  render(){
+
+      if (this.state.isLoading){
+          return(
+              <View><ActivityIndicator /></View>
+          )
+      }
+      else
+      {
+          // let movies = this.state.dataSource.map((val, key) => {
+          //     return <View key={key}><PartyListItem partyName={val.title} partyAddress="Gayley" partyDate="date"/></View>
+          // })
+
+          let parties = this.state.dataSource.map((val, key) => {
+              return <View key={key}><PartyListItem partyName={val.name} partyAddress={val.address} partyDate="date"/></View>
+          })
+
+          // what u gonna see on the screen baby
+          return (
+            <View style = {styles.background}>
+                <ScrollView>
+                    <Text style={{color: "white", fontSize: 16, paddingLeft: 10}}>Current Listings</Text>
+                    <TouchableOpacity 
+                    style={styles.loginButton}>
+                      <Text style={styles.loginText}>Edit Listing</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('PartyCreateS')}>
+                    <Text style={styles.login}>Create a new party</Text>
+                  </TouchableOpacity>
+                    <Text style={{color: "white", fontSize: 16, paddingLeft: 10}}>Past Events</Text>
+                    {parties}
+                </ScrollView>
+          
+            </View>
+          );
+      }
+
+  } //render
 }
+
+
+
 
 const styles = StyleSheet.create({
     background: {
