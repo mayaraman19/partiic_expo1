@@ -65,7 +65,9 @@ export default class MyParties extends React.Component {
           // })
 
           let parties = this.state.dataSource.map((val, key) => {
-              return <View key={key}><PartyListItem partyName={val.name} partyAddress={val.address} partyDate="date"/></View>
+              return (
+                <View key={key}><PartyListItem partyName={val.name} partyAddress={val.address} partyDate="date" guysAllowed={true}/></View>
+              );
           })
 
           // what u gonna see on the screen baby
@@ -115,6 +117,7 @@ const styles = StyleSheet.create({
         textAlign: "center", 
         color: "white", 
         fontWeight: "bold", 
+        width: 325,
       },
       loginButton: {
         borderRadius: 11, 

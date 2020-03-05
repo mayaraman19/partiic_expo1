@@ -25,7 +25,8 @@ class MapPin extends Component {
         const {
             partyName, 
             partyAddress, 
-            partyDate
+            partyDate, 
+            partyCoordinate
         } = this.props; 
     return (
         <View>

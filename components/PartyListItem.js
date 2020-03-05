@@ -19,37 +19,59 @@ import {
 
 
 class PartyListItem extends Component {
+    constructor(props) {
+        super(props);
+        // this.handleLoginClick = this.handleLoginClick.bind(this);
+        // this.handleLogoutClick = this.handleLogoutClick.bind(this);
+        this.state = {
+            guysAllowed: true,
+            freeEntry: true, 
+            partyToday: true, 
+        };
+      }
     render(){
         const {
             partyName, 
             partyAddress, 
-            partyDate
+            partyDate, 
+            guysAllowed = this.state.guysAllowed,
+            freeEntry = this.state.freeEntry, 
+            partyToday = this.state.partyToday
         } = this.props; 
-    return (
-        <View style = {styles.row}>
-            <View>
-        <TouchableOpacity style={styles.mainButton} onPress={()=>this.props.navigation.navigate('PartyScreen')}>
-            <Text style = {styles.eventTitle}>{partyName}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.mainButton} onPress={()=>this.props.navigation.navigate('PartyScreen')}>
-            <Text style = {styles.eventAddress}>{partyAddress}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.mainButton} onPress={()=>this.props.navigation.navigate('PartyScreen')}>
-            <Text style = {styles.eventAddress}>{partyDate}</Text>
-        </TouchableOpacity>
-        </View>
-        <View style = {{width:"15%", 
-        display: "flex",
-        // flexDirection: "row",
-        // justifyContent: "space-evenly", 
-        // width: "30%"
-        }}>
-            <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>L</Text></TouchableOpacity>
-            <Text>     </Text>
-            <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>F</Text></TouchableOpacity>
-        </View>
-        </View>
-    );
+
+        if (!guysAllowed || !freeEntry || !partyToday)
+        {
+            return(<Text style={{fontSize: 30, color: "white", top: 400}}>NO GUYS ALLOWED</Text>)
+        }
+        else
+        {
+            return (
+                <View style = {styles.row}>
+                    <View>
+                <TouchableOpacity style={styles.mainButton} onPress={()=>this.props.navigation.navigate('PartyScreen')}>
+                    <Text style = {styles.eventTitle}>{partyName}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.mainButton} onPress={()=>this.props.navigation.navigate('PartyScreen')}>
+                    <Text style = {styles.eventAddress}>{partyAddress}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.mainButton} onPress={()=>this.props.navigation.navigate('PartyScreen')}>
+                    <Text style = {styles.eventAddress}>{partyDate}</Text>
+                </TouchableOpacity>
+                </View>
+                <View style = {{width:"15%", 
+                display: "flex",
+                // flexDirection: "row",
+                // justifyContent: "space-evenly", 
+                // width: "30%"
+                }}>
+                    <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>L</Text></TouchableOpacity>
+                    <Text>     </Text>
+                    <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>F</Text></TouchableOpacity>
+                </View>
+                </View>
+            );
+        }
+    
     }
     
 }

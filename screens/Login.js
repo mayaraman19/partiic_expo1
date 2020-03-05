@@ -35,9 +35,6 @@ import {
 import LoginInputField from '../components/LoginInputField'; 
 
 export default class Login extends React.Component {
-    // const pressHandler = () => {
-    //   navigation.navigate('ProfileS'); 
-    // }
     render() {
       return (
         <>

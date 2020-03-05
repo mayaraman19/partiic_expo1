@@ -17,8 +17,6 @@ import PartyListItem from '../components/PartyListItem';
 import MapPin from '../components/MapPin';
 import { tsConstructorType } from '@babel/types';
 
-
-// export default function Map({navigation}) {
     
 export default class Map extends React.Component {  
     
@@ -27,12 +25,16 @@ export default class Map extends React.Component {
         this.state = {
             isLoading: true, 
             dataSource: null, 
+            guysAllowed: true, 
+            freeEntry: true, 
+            partyToday: true, 
         }
     }
     
+   
+    
     componentDidMount(){
 
-        //return fetch('https://facebook.github.io/react-native/movies.json')
         return fetch('http://ucla-partic.herokuapp.com/')
 
             .then( (response) => response.json() )
@@ -51,7 +53,29 @@ export default class Map extends React.Component {
             });
     }
     
+
+    guysNotAllowed(){
+        this.setState({guysAllowed: !this.state.guysAllowed}); 
+    }
+
+    noFreeEntry(){
+        this.setState({freeEntry: !this.state.freeEntry}); 
+    }
+
+    noPartyToday(){
+        this.setState({partyToday: !this.state.partyToday}); 
+    }
+    
     render(){
+
+        var bColor="transparent"; 
+
+        if (!this.state.guysAllowed)
+        {
+            bColor = "#eee"; 
+        }
+            
+        const mybColor = bColor; 
 
         if (this.state.isLoading){
             return(
@@ -60,28 +84,28 @@ export default class Map extends React.Component {
         }
         else
         {
-            // let movies = this.state.dataSource.map((val, key) => {
-            //     return <View key={key}><PartyListItem partyName={val.title} partyAddress="Gayley" partyDate="date"/></View>
-            // })
-
+            let pins = this.state.dataSource.map((val, key) => {
+                return <View key={key}><MapPin partyName={val.name} partyAddress={val.address} partyDate="date"/></View>
+            })
             let parties = this.state.dataSource.map((val, key) => {
-                return <View key={key}><PartyListItem partyName={val.name} partyAddress={val.address} partyDate="date"/></View>
+                return <View key={key}><PartyListItem partyName={val.name} partyAddress={val.address} partyDate="date" guysAllowed={this.state.guysAllowed} freeEntry={this.state.freeEntry} partyToday={this.state.partyToday}/></View>
             })
 
             // what u gonna see on the screen baby
             return (
                 <View style = {styles.background}>
                     <MapView style={styles.mapStyle} region={{latitude: 34.06, longitude: -118.44, latitudeDelta: 0.0922, longitudeDelta: 0.0421}}>
-                    <MapPin partyName="hello" partyAddress="address" partyDate="insert date here"/>
+                    {pins}
                     </MapView>
                     <View style = {styles.row}>
-                        <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Parties Today</Text></TouchableOpacity>
-                        <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>1 Mile</Text></TouchableOpacity>
-                        <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Free Drinks</Text></TouchableOpacity>
-                        <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Free Entry</Text></TouchableOpacity>
+                        <TouchableOpacity style = {[styles.filterButton, {backgroundColor: "transparent"}]} onPress={()=>this.noPartyToday()}><Text style = {styles.buttonText}>Parties Today</Text></TouchableOpacity>
+                        {/* {console.log("hi")}
+                        {console.log(bColor)} */}
+                        <TouchableOpacity style = {[styles.filterButton, {backgroundColor: {bColor}}]} onPress={()=>this.guysNotAllowed()}><Text style = {styles.buttonText}>Guys Allowed</Text></TouchableOpacity>
+                        {/* <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Free Drinks</Text></TouchableOpacity> */}
+                        <TouchableOpacity style = {styles.filterButton} onPress={()=>this.noFreeEntry()}><Text style = {styles.buttonText}>Free Entry</Text></TouchableOpacity>
                     </View>
                     <ScrollView>
-                        {/* {movies} */}
                         {parties}
                     </ScrollView>
 
