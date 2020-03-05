@@ -32,14 +32,16 @@ export default class Map extends React.Component {
     
     componentDidMount(){
 
-        return fetch('https://facebook.github.io/react-native/movies.json')
+        //return fetch('https://facebook.github.io/react-native/movies.json')
+        return fetch('http://ucla-partic.herokuapp.com/')
+
             .then( (response) => response.json() )
             .then( (responseJson) => {
 
                 this.setState(
                     {
                         isLoading: false, 
-                        dataSource: responseJson.movies,
+                        dataSource: responseJson,
                     }
                 )
 
@@ -47,7 +49,6 @@ export default class Map extends React.Component {
             .catch((error) => {
                 console.log(error)
             });
-
     }
     
     render(){
@@ -59,10 +60,13 @@ export default class Map extends React.Component {
         }
         else
         {
-            let movies = this.state.dataSource.map((val, key) => {
-                return <View key={key}><PartyListItem partyName={val.title} partyAddress="Gayley" partyDate="date"/></View>
-            })
+            // let movies = this.state.dataSource.map((val, key) => {
+            //     return <View key={key}><PartyListItem partyName={val.title} partyAddress="Gayley" partyDate="date"/></View>
+            // })
 
+            let parties = this.state.dataSource.map((val, key) => {
+                return <View key={key}><PartyListItem partyName={val.name} partyAddress={val.address} partyDate="date"/></View>
+            })
 
             // what u gonna see on the screen baby
             return (
@@ -77,21 +81,13 @@ export default class Map extends React.Component {
                         <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Free Entry</Text></TouchableOpacity>
                     </View>
                     <ScrollView>
-                        {movies}
-                        {/* <PartyListItem partyName={movies} partyAddress="Gayley" partyDate="date"/>
-                        <PartyListItem partyName=";lskfdj;alskfhs;" partyAddress="Gayley" partyDate="date"/>
-                        <PartyListItem partyName=";lskfdj;alskfhs;" partyAddress="Gayley" partyDate="date"/>
-                        {movies}
-                        {movies[0]} */}
+                        {/* {movies} */}
+                        {parties}
                     </ScrollView>
 
                 </View>
             );
         }
-
-
-    
-
 
     } //render
 }

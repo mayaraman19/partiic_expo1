@@ -23,6 +23,8 @@ export default class PartyCreate extends React.Component {
         this.state = {
             isLoading: true, 
             dataSource: null, 
+            partyNameInput: '', 
+            partyAddress: '', 
         }
     }
 
@@ -43,8 +45,75 @@ export default class PartyCreate extends React.Component {
             .catch((error) => {
                 console.log(error)
             });
-    }
     
+            
+    }
+
+    go(){
+        this.props.navigation.navigate('MyPartiesS'); 
+    }
+
+    async submit(){
+        let collection={}
+        collection.name = this.state.partyNameInput
+        collection.address = this.state.partyAddress
+        console.log(JSON.stringify(collection));
+        try {
+            const response = await fetch('http://ucla-partic.herokuapp.com/', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              credentials: 'include',
+              body: JSON.stringify(collection),
+            });
+            const status = response.status;
+            if (status >= 200 && status < 300) {
+              const data = await response.json();
+              return (
+                    console.log("teehee"), 
+                    {err: false,},
+                    console.log("hi"),
+                    this.props.navigation.navigate('MyPartiesS')
+              ); 
+            } else {
+              const data = await response.json();
+              throw new Error(data.message);
+            }
+          } catch (e) {
+            return (
+                console.log("caught an error lmao coooool"),
+                {err: e.message,},
+                this.props.navigation.navigate('MyPartiesS') )
+          }
+          
+    }
+
+
+
+
+
+
+    // submit(){
+    //     // console.log(this.state.partyNameInput)
+    //     // console.log(this.state.partyAddress)
+    //     let collection={}
+    //     collection.name = this.state.partyNameInput
+    //     collection.address = this.state.partyAddress
+    //     console.log(JSON.stringify(collection));
+    //     // fetch('http://ucla-partic.herokuapp.com/', {
+    //     //         method: 'POST', 
+    //     //         credentials: 'omit', 
+    //     //         headers: new Headers ({
+    //     //             'Content-Type': 'application/json'
+    //     //         }), 
+    //     //         body: JSON.stringify(collection), 
+    //     //     }) .then(res=>res.json())
+    //     //     // .then(res=>res.text())
+    //     //     .then(console.log(JSON.stringify(collection)))
+    //     //     .catch(e=>console.error('Error:', e))
+    //     //     .then(response=>console.log('Succ:', response))
+    //     this.props.navigation.navigate('MyPartiesS'); 
+    // }
+
     render() {
         if (this.state.isLoading){
             return(
@@ -53,6 +122,7 @@ export default class PartyCreate extends React.Component {
         }
         else
         {
+            // console.log("hihihi"); 
             return (
                 <ScrollView style = {styles.background}>
                     <View style = {styles.header}>
@@ -68,11 +138,11 @@ export default class PartyCreate extends React.Component {
                     <Text>{'\n'}</Text>
                     <View style={styles.input}>
                         <Text style={styles.label}>  Party Name </Text>
-                        <LoginInputField labelText=' Username: ' />
+                        <LoginInputField labelText=' Username: ' myOnChangeText={(text) => this.setState({partyNameInput:text})}/>
                         <Text style={styles.label}>  When </Text>
                         <LoginInputField labelText=' Username: ' />
                         <Text style={styles.label}>  Where </Text>
-                        <LoginInputField labelText=' Username: ' />
+                        <LoginInputField labelText=' Username: ' myOnChangeText={(text) => this.setState({partyAddress:text})}/>
                         <Text style={styles.label}>  Price </Text>
                         <TextInput keyboardType='numeric' style={{borderBottomColor: "white", paddingBottom: 5, borderBottomWidth: 1, marginHorizontal:15, fontSize: 20, color: "white", marginTop: 10}}/>
                         {/* <LoginInputField labelText=' Username: ' myKeyType='numeric'/> */}
@@ -87,7 +157,8 @@ export default class PartyCreate extends React.Component {
                         </View>
                         <TouchableOpacity 
                         style={styles.loginButton} 
-                        onPress={()=>this.props.navigation.navigate('MyPartiesS')}
+                        // onPress={()=>this.props.navigation.navigate('MyPartiesS')}
+                        onPress={()=>{this.submit()}}
                         >
                           <Text style={styles.loginText}>CREATE PARTY</Text>
                         </TouchableOpacity>
@@ -228,4 +299,19 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline', 
         textAlign: "center"
       },
+
+
+      wrapper: {
+        display: "flex",
+      }, 
+      inputField: {
+        borderBottomWidth: 1,
+        borderBottomColor: "white", 
+        borderRadius: 11, 
+        paddingTop: 1,
+        paddingLeft: 10, 
+        paddingBottom: 5, 
+        height: 30,
+        margin: 10, 
+      }
 });

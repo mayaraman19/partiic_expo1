@@ -15,7 +15,8 @@ class LoginInputField extends Component {
         borderColor, 
         password, 
         labelWidth, 
-        keyboardType
+        keyboardType, 
+        myOnChangeText, 
     } = this.props;
 
     const inputColor = textColor || Colors.white; 
@@ -32,6 +33,7 @@ class LoginInputField extends Component {
         secureTextEntry={password}
         fontSize={myfontSize}
         keyboardType={myKeyType}
+        onChangeText={myOnChangeText}
         />
       </View>
     );
@@ -40,8 +42,6 @@ class LoginInputField extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     display: "flex",
-    // paddingTop: 10, 
-    // paddingBottom: 10
   }, 
   inputField: {
     borderBottomWidth: 1,
@@ -50,11 +50,8 @@ const styles = StyleSheet.create({
     paddingTop: 1,
     paddingLeft: 10, 
     paddingBottom: 5, 
-    // fontSize: 18, 
-    // backgroundColor: '#AFAFAF', 
     height: 30,
     margin: 10, 
-    // width: 325, 
   }
 });
 export default LoginInputField;
