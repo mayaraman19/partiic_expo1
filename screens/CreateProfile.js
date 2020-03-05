@@ -32,22 +32,15 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import LoginInputField from '../components/LoginInputField'; 
-//import BottomBar from '../../components/BottomBar/BottomBar'; 
 
-export default function CreateProfile ({navigation}) {
-    const pressHandler = () => {
-        navigation.navigate('Login'); 
-      }
-    // render() {
+export default class CreateProfile extends React.Component { 
+     render() {
       return (
         <>
         <>
         <KeyboardAvoidingView style={styles.avoidView} behavior="padding">
-        {/* <StatusBar barStyle="dark-content" /> */}
         <SafeAreaView>
           
-              {/* <Image style={{marginTop: 100, marginBottom: 50}} source={require('../components/icons/ParTiiCnewer.png')} /> */}
-              {/* <Text style={styles.sectionTitle}>PARTIIIC</Text> */}
               <Text style={{color: "white", fontSize: 24, fontWeight: "bold", padding: 20}}>ABOUT YOU</Text>
               <TouchableOpacity style={{borderStyle: "dashed", borderColor: "white", borderWidth: 2, width: "80%", height: "30%", alignSelf: "center", borderRadius: 20, marginBottom: 50}}>
                   <Text style={{color: "white", fontSize: 20, textAlign: "center", paddingTop: 75}}>Upload Image</Text>
@@ -59,33 +52,21 @@ export default function CreateProfile ({navigation}) {
                 <LoginInputField labelText=' Password: ' password={true}/>
                 <Text style={styles.label}>Organization (optional) </Text>
                 <LoginInputField labelText=' Email: ' />
-                {/* <Picker selectedValue="stuff" style={{ height: 60, color: 'white'}}>
-                    <Picker.Item label='item' value='oh'/>
-                </Picker> */}
-                <TouchableOpacity onPress={()=>navigation.navigate('ProfileS')}
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate('ProfileS')}
                 style={styles.loginButton}>
                   <Text style={styles.loginText}>Create Profile</Text>
                 </TouchableOpacity>
               </View>
-
-              {/* <Text style={{display: flex, flexDirection: "row"}}> */}
-              {/* <Text style={styles.need} >Already have an account? 
-                {" "}
-              </Text> */}
-              <TouchableOpacity onPress={()=>navigation.navigate('MapS')}
-            //   style={styles.loginButton}
-              >
+              <TouchableOpacity onPress={()=>navigation.navigate('MapS')}>
                 <Text style={styles.login}>I'll do this later...</Text>
               </TouchableOpacity>
-            {/* </Text> */}
               
         </SafeAreaView>
         </KeyboardAvoidingView>
-        {/* <BottomBar/> */}
       </>
       </>
       );
-    //}
+    }
   }
 
 

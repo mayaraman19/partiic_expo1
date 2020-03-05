@@ -22,7 +22,8 @@ import {
   TouchableOpacity, 
   Linking, 
   TextInput, 
-  ImageBackground
+  ImageBackground, 
+  ActivityIndicator
 } from 'react-native';
 
 import {
@@ -35,20 +36,53 @@ import {
 
 import InputField from '../components/InputField'; 
 
-export default function ProfileScreen({navigation}) {
-    const pressHandler = () => {
-      navigation.navigate('Safety'); 
+//export default function ProfileScreen({navigation}) {
+export default class ProfileScreen extends React.Component{
+    constructor(props){
+      super(props); 
+      this.state = {
+        isLoading: true, 
+        dataSource: null, 
+      }
+    }
+
+    componentDidMount(){
+
+      return fetch('https://jsonplaceholder.typicode.com/photos')
+      .then( (response) => response.json() )
+      .then( (responseJson) => {
+
+          this.setState(
+              {
+                  isLoading: false, 
+                  dataSource: responseJson,
+              }
+          )
+      })
+      .catch((error) => {
+          console.log(error)
+      });
+
     }
     
-    // render() {
-      // const navigation = useNavigation();
-      return (
+    render() {
+      if (this.state.isLoading){
+        return <View><ActivityIndicator /></View>
+      }
+      else
+      {
+        let pic = this.state.dataSource.map((val, key)=>{ 
+          return <View key={key}><ImageBackground source={val.url} style={{width: '100%', height: '100%'}}><Text style={{textAlignVertical: "center"}}>OOH BABY</Text></ImageBackground></View>
+        })
+        return (
           <View>
               <ImageBackground source={require('../components/pics/johnsmith.png')} style={{width: '100%', height: '100%'}}>
-                </ImageBackground>
+              </ImageBackground>
+              {/* {pic} */}
           </View>
-      );
-    //}
+        );
+      }
+    }
   }
 
 

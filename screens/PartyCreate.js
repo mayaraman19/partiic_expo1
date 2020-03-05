@@ -12,64 +12,103 @@ import {
   TouchableOpacity, 
   Linking, 
   TextInput,
+  ActivityIndicator
 } from 'react-native';
 
 import LoginInputField from '../components/LoginInputField';
 
-export default function PartyCreate({navigation}) {
-    return (
-        <ScrollView style = {styles.background}>
-            <View style = {styles.header}>
-                <Text style = {styles.headerText}>
-                    HOST A PARTY
-                </Text>
-            </View>
-            <TouchableOpacity style = {styles.photoButton}>
-                <Text style = {styles.photoText}>
-                    Upload Party Image
-                </Text>
-            </TouchableOpacity>
-            <Text>{'\n'}</Text>
-            <View style={styles.input}>
-                <Text style={styles.label}>  Party Name </Text>
-                <LoginInputField labelText=' Username: ' />
-                <Text style={styles.label}>  When </Text>
-                <LoginInputField labelText=' Username: ' />
-                <Text style={styles.label}>  Where </Text>
-                <LoginInputField labelText=' Username: ' />
-                <Text style={styles.label}>  Price </Text>
-                <TextInput keyboardType='numeric' style={{borderBottomColor: "white", paddingBottom: 5, borderBottomWidth: 1, marginHorizontal:15, fontSize: 20, color: "white", marginTop: 10}}/>
-                {/* <LoginInputField labelText=' Username: ' myKeyType='numeric'/> */}
-                <Text style={styles.label}>  Venmo Handle </Text>
-                <LoginInputField labelText=' Username: ' />
-                {/* <Text style={styles.label}>  Tags </Text> */}
+export default class PartyCreate extends React.Component {
+    constructor(props){
+        super(props); 
+        this.state = {
+            isLoading: true, 
+            dataSource: null, 
+        }
+    }
 
-                <View style={{display: "flex", flexDirection: "row", justifyContent: "center", marginTop: 10}}>
-                    <TouchableOpacity style={styles.tags}><Text style={styles.tagText}>Drinks</Text></TouchableOpacity>
-                    <TouchableOpacity style={styles.tags}><Text style={styles.tagText}>Guys Allowed</Text></TouchableOpacity>
-                    {/* <TouchableOpacity></TouchableOpacity> */}
-                </View>
-                <TouchableOpacity 
-                style={styles.loginButton} 
-                // onPress={()=>navigation.navigate('CrProfS')}
-                >
-                  <Text style={styles.loginText}>CREATE PARTY</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={()=>navigation.navigate('MyPartiesS')}>
-                <Text style={styles.login}>Go to my parties</Text>
-              </TouchableOpacity>
-                <Text>{'\n'}</Text>
-                <Text>{'\n'}</Text>
-                
-                <TouchableOpacity style={{borderWidth: 1, borderColor: "white"}}
-                    onPress={() => Linking.openURL('http://google.com')}>
-                    <Text style={{color: 'white', fontSize: 20}}>Google</Text>
-                </TouchableOpacity>
-                
-              </View>            
-        </ScrollView>
+    componentDidMount(){
 
-    );
+        return fetch('https://facebook.github.io/react-native/movies.json')
+            .then( (response) => response.json() )
+            .then( (responseJson) => {
+
+                this.setState(
+                    {
+                        isLoading: false, 
+                        dataSource: responseJson.movies,
+                    }
+                )
+
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+    }
+    
+    render() {
+        if (this.state.isLoading){
+            return(
+                <View><ActivityIndicator /></View>
+            )
+        }
+        else
+        {
+            return (
+                <ScrollView style = {styles.background}>
+                    <View style = {styles.header}>
+                        <Text style = {styles.headerText}>
+                            HOST A PARTY
+                        </Text>
+                    </View>
+                    <TouchableOpacity style = {styles.photoButton}>
+                        <Text style = {styles.photoText}>
+                            Upload Party Image
+                        </Text>
+                    </TouchableOpacity>
+                    <Text>{'\n'}</Text>
+                    <View style={styles.input}>
+                        <Text style={styles.label}>  Party Name </Text>
+                        <LoginInputField labelText=' Username: ' />
+                        <Text style={styles.label}>  When </Text>
+                        <LoginInputField labelText=' Username: ' />
+                        <Text style={styles.label}>  Where </Text>
+                        <LoginInputField labelText=' Username: ' />
+                        <Text style={styles.label}>  Price </Text>
+                        <TextInput keyboardType='numeric' style={{borderBottomColor: "white", paddingBottom: 5, borderBottomWidth: 1, marginHorizontal:15, fontSize: 20, color: "white", marginTop: 10}}/>
+                        {/* <LoginInputField labelText=' Username: ' myKeyType='numeric'/> */}
+                        <Text style={styles.label}>  Venmo Handle </Text>
+                        <LoginInputField labelText=' Username: ' />
+                        {/* <Text style={styles.label}>  Tags </Text> */}
+        
+                        <View style={{display: "flex", flexDirection: "row", justifyContent: "center", marginTop: 10}}>
+                            <TouchableOpacity style={styles.tags}><Text style={styles.tagText}>Drinks</Text></TouchableOpacity>
+                            <TouchableOpacity style={styles.tags}><Text style={styles.tagText}>Guys Allowed</Text></TouchableOpacity>
+                            {/* <TouchableOpacity></TouchableOpacity> */}
+                        </View>
+                        <TouchableOpacity 
+                        style={styles.loginButton} 
+                        onPress={()=>this.props.navigation.navigate('MyPartiesS')}
+                        >
+                          <Text style={styles.loginText}>CREATE PARTY</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={()=>this.props.navigation.navigate('MyPartiesS')}>
+                        <Text style={styles.login}>Go to my parties</Text>
+                      </TouchableOpacity>
+                        <Text>{'\n'}</Text>
+                        <Text>{'\n'}</Text>
+                        
+                        <TouchableOpacity style={{borderWidth: 1, borderColor: "white"}}
+                            onPress={() => Linking.openURL('http://google.com')}>
+                            <Text style={{color: 'white', fontSize: 20}}>Google</Text>
+                        </TouchableOpacity>
+                        
+                      </View>            
+                </ScrollView>
+        
+            );
+        }
+    
+    }
 }
 
 const styles = StyleSheet.create({

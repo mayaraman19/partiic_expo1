@@ -34,11 +34,11 @@ import {
 
 import LoginInputField from '../components/LoginInputField'; 
 
-export default function Login({navigation}) {
-    const pressHandler = () => {
-      navigation.navigate('ProfileS'); 
-    }
-    
+export default class Login extends React.Component {
+    // const pressHandler = () => {
+    //   navigation.navigate('ProfileS'); 
+    // }
+    render() {
       return (
         <>
         <KeyboardAvoidingView style={styles.avoidView} >
@@ -57,7 +57,7 @@ export default function Login({navigation}) {
                 <Text style={styles.label}>Password </Text>
                 <LoginInputField labelText=' Password: ' password={true}/>
                 <TouchableOpacity 
-                style={styles.loginButton} onPress={()=>navigation.navigate('MapS')}>
+                style={styles.loginButton} onPress={()=>this.props.navigation.navigate('ProfileS')}>
                   <Text style={styles.loginText}>Log In</Text>
                 </TouchableOpacity>
               </View>
@@ -66,7 +66,7 @@ export default function Login({navigation}) {
               <Text style={styles.need}>Need an account? 
                 {" "}
               </Text>
-              <TouchableOpacity onPress={()=>navigation.navigate('SignupS')}><Text
+              <TouchableOpacity onPress={()=>this.props.navigation.navigate('SignupS')}><Text
                 style={styles.signup}
                 
               >
@@ -78,6 +78,7 @@ export default function Login({navigation}) {
         </KeyboardAvoidingView>
       </>
       );
+    }
   }
 
 const styles = StyleSheet.create({
