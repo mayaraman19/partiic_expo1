@@ -58,25 +58,8 @@ const Profile = createSwitchNavigator(
   config
 );
 
-Profile.navigationOptions = ({navigation}) => {
 
-  
-    let tabBarVisible = true;
-    if(navigation.state.index == 0 || navigation.state.index == 1 || navigation.state.index == 2) {
-      tabBarVisible = false;
-    }
-    return {
-      tabBarVisible,
-    };
-    
-  // if(tabVisible({navigation}) === booleeeen) {
-  //   tabBarLabel: 'Profile',
-  // },
-  //tabBarLabel: 'Profile',
-    
-};
-
-Profile.navigationOptions = {
+Profile.navigationOptions =  {
   tabBarIcon: ({focused}) => (
     <Ionicons focused = {focused} name = "md-person" size = {40} />
   ),
@@ -88,9 +71,29 @@ Profile.navigationOptions = {
     paddingVertical: '0%',
     activeBackgroundColor: '#19DAD4',
     showIcon: 'true',
-    tabBarVisible: Profile.navigationOptions,
+    //tabBarVisible: Profile.navigationOptions,
     showLabel: false,
   },
+};
+
+
+Profile.navigationOptions = ({navigation, focused}) => {
+  let tabBarVisible = true;
+  let showIcon = true; 
+  if(navigation.state.index == 0 || navigation.state.index == 1 || navigation.state.index == 2) {
+    tabBarVisible = false;
+    showIcon = false; 
+  }
+  return {
+    tabBarVisible,
+    showIcon,
+  };
+  
+// if(tabVisible({navigation}) === booleeeen) {
+//   tabBarLabel: 'Profile',
+// },
+//tabBarLabel: 'Profile',
+  
 };
   // tabBarIcon: ({ focused }) => (
   //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
