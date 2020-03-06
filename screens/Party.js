@@ -19,6 +19,7 @@ import {
 import LikesButton from '../components/LikesButton';
 import StreetDisplay from '../components/StreetDisplay';
 
+
 export default function Party({navigation}) {
     return (
         <View style = {styles.background}>
@@ -34,9 +35,9 @@ export default function Party({navigation}) {
             <StreetDisplay number="10pm-2am"/>
             <View style={{borderBottomWidth: 2, borderBottomColor: "#19DAD4", padding: 10, marginHorizontal: 15,}}/>
             <View style={styles.appBox}>
-                <Image source={require('../components/icons/venmo.png')} />
-                <Image source={require('../components/icons/venmo.png')} />
-                <Image source={require('../components/icons/venmo.png')} />
+                <TouchableOpacity><Image source={require('../components/icons/venmo.png')} /></TouchableOpacity>
+                <TouchableOpacity><Image source={require('../components/icons/venmo.png')} /></TouchableOpacity>
+                <TouchableOpacity><Image source={require('../components/icons/venmo.png')} /></TouchableOpacity>
                 {/* <Image source={require('../components/icons/venmo.png')} /> */}
                 <TouchableOpacity style={styles.report} onPress={(()=>navigation.navigate('ReportS'))}><Text style={{color: "white"}}>REPORT</Text></TouchableOpacity>
             </View>

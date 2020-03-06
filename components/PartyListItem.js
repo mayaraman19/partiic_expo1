@@ -64,9 +64,10 @@ class PartyListItem extends Component {
                 // justifyContent: "space-evenly", 
                 // width: "30%"
                 }}>
-                    <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>L</Text></TouchableOpacity>
+                    {/* <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>L</Text></TouchableOpacity> */}
+                    <TouchableOpacity><Image style={{marginTop: 11}} source={require("../components/icons/likeIcon.png")}/></TouchableOpacity>
                     <Text>     </Text>
-                    <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>F</Text></TouchableOpacity>
+                    <TouchableOpacity><Image style={{marginTop: 0}} source={require("../components/icons/flag.png")}/></TouchableOpacity>
                 </View>
                 </View>
             );

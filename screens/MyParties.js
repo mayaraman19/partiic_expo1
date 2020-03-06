@@ -66,6 +66,7 @@ export default class MyParties extends React.Component {
 
           let parties = this.state.dataSource.map((val, key) => {
               return (
+                // keep guysAllowed and whatnot "true" since it should be always displayed
                 <View key={key}><PartyListItem partyName={val.name} partyAddress={val.address} partyDate="date" guysAllowed={true}/></View>
               );
           })
@@ -74,15 +75,15 @@ export default class MyParties extends React.Component {
           return (
             <View style = {styles.background}>
                 <ScrollView>
-                    <Text style={{color: "white", fontSize: 16, paddingLeft: 10}}>Current Listings</Text>
+                    <Text style={{color: "white", fontSize: 18, paddingLeft: 10, fontWeight: "bold", marginTop: 20}}>Current Listings</Text>
                     <TouchableOpacity 
                     style={styles.loginButton}>
                       <Text style={styles.loginText}>Edit Listing</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>navigation.navigate('PartyCreateS')}>
+                    <TouchableOpacity onPress={()=>this.props.navigation.navigate('PartyCreateS')}>
                     <Text style={styles.login}>Create a new party</Text>
                   </TouchableOpacity>
-                    <Text style={{color: "white", fontSize: 16, paddingLeft: 10}}>Past Events</Text>
+                    <Text style={{color: "white", fontSize: 18, paddingLeft: 10, fontWeight: "bold", marginTop: 20}}>Past Events</Text>
                     {parties}
                 </ScrollView>
           
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
         height: 50, 
         textAlign: "center",
         marginHorizontal: 15, 
-        marginBottom: 30, 
+        marginBottom: 0, 
       },
     row: {
         backgroundColor: "red",
