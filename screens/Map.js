@@ -85,7 +85,7 @@ export default class Map extends React.Component {
         else
         {
             let pins = this.state.dataSource.map((val, key) => {
-                return <View key={key}><MapPin partyName={val.name} partyAddress={val.address} partyDate="date"/></View>
+                return <View key={key}><MapPin partyName={val.name} partyAddress={val.address} partyDate={val.dateTime}/></View>
             })
             let parties = this.state.dataSource.map((val, key) => {
                 return <View key={key}><PartyListItem partyName={val.name} partyAddress={val.address} partyDate={val.dateTime} guysAllowed={this.state.guysAllowed} freeEntry={this.state.freeEntry} partyToday={this.state.partyToday}/></View>
@@ -99,8 +99,6 @@ export default class Map extends React.Component {
                     </MapView>
                     <View style = {styles.row}>
                         <TouchableOpacity style = {[styles.filterButton, {backgroundColor: "transparent"}]} onPress={()=>this.noPartyToday()}><Text style = {styles.buttonText}>Parties Today</Text></TouchableOpacity>
-                        {/* {console.log("hi")}
-                        {console.log(bColor)} */}
                         <TouchableOpacity style = {[styles.filterButton, {backgroundColor: {bColor}}]} onPress={()=>this.guysNotAllowed()}><Text style = {styles.buttonText}>Guys Allowed</Text></TouchableOpacity>
                         {/* <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Free Drinks</Text></TouchableOpacity> */}
                         <TouchableOpacity style = {styles.filterButton} onPress={()=>this.noFreeEntry()}><Text style = {styles.buttonText}>Free Entry</Text></TouchableOpacity>

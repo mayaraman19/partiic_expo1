@@ -24,7 +24,11 @@ export default class PartyCreate extends React.Component {
             isLoading: true, 
             dataSource: null, 
             partyNameInput: '', 
-            partyAddress: '', 
+            partyAddress: '',
+            partyDate: '', 
+            partyPrice: null, 
+            partyGuys: false, 
+
         }
     }
 
@@ -57,6 +61,9 @@ export default class PartyCreate extends React.Component {
         let collection={}
         collection.name = this.state.partyNameInput
         collection.address = this.state.partyAddress
+        collection.dateTime = this.state.partyDate
+        collection.entryFee = this.state.partyPrice
+        collection.guysAllowed = this.state.partyGuys
         console.log(JSON.stringify(collection));
         try {
             const response = await fetch('http://ucla-partic.herokuapp.com/', {
@@ -140,19 +147,22 @@ export default class PartyCreate extends React.Component {
                         <Text style={styles.label}>  Party Name </Text>
                         <LoginInputField labelText=' Username: ' myOnChangeText={(text) => this.setState({partyNameInput:text})}/>
                         <Text style={styles.label}>  When </Text>
-                        <LoginInputField labelText=' Username: ' />
+                        <LoginInputField labelText=' Username: ' myOnChangeText={(text) => this.setState({partyDate:text})}/>
                         <Text style={styles.label}>  Where </Text>
                         <LoginInputField labelText=' Username: ' myOnChangeText={(text) => this.setState({partyAddress:text})}/>
                         <Text style={styles.label}>  Price </Text>
-                        <TextInput keyboardType='numeric' style={{borderBottomColor: "white", paddingBottom: 5, borderBottomWidth: 1, marginHorizontal:15, fontSize: 20, color: "white", marginTop: 10}}/>
+                        <TextInput keyboardType='numeric' 
+                            style={{borderBottomColor: "white", paddingBottom: 5, borderBottomWidth: 1, marginHorizontal:15, fontSize: 20, color: "white", marginTop: 10}}
+                            myOnChangeText={(text) => this.setState({partyPrice:text})}
+                            />
                         {/* <LoginInputField labelText=' Username: ' myKeyType='numeric'/> */}
                         <Text style={styles.label}>  Venmo Handle </Text>
-                        <LoginInputField labelText=' Username: ' />
+                        <LoginInputField labelText=' Username: ' myOnChangeText={(text) => this.setState({partyVenmo:text})}/>
                         {/* <Text style={styles.label}>  Tags </Text> */}
         
                         <View style={{display: "flex", flexDirection: "row", justifyContent: "center", marginTop: 10}}>
                             <TouchableOpacity style={styles.tags}><Text style={styles.tagText}>Drinks</Text></TouchableOpacity>
-                            <TouchableOpacity style={styles.tags}><Text style={styles.tagText}>Guys Allowed</Text></TouchableOpacity>
+                            <TouchableOpacity style={styles.tags} onPress={() => this.setState({partyGuys: true})}><Text style={styles.tagText}>Guys Allowed</Text></TouchableOpacity>
                             {/* <TouchableOpacity></TouchableOpacity> */}
                         </View>
                         <TouchableOpacity 
