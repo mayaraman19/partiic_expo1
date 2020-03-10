@@ -24,7 +24,7 @@ class PartyListItem extends Component {
         // this.handleLoginClick = this.handleLoginClick.bind(this);
         // this.handleLogoutClick = this.handleLogoutClick.bind(this);
         this.state = {
-            guysAllowed: true,
+            //guysAllowed: true,
             freeEntry: true, 
             partyToday: true, 
         };
@@ -34,14 +34,15 @@ class PartyListItem extends Component {
             partyName, 
             partyAddress, 
             partyDate = this.state.partyDate, 
-            guysAllowed = this.state.guysAllowed,
+            guysAllowed, 
+            //guysAllowed = this.state.guysAllowed,
             freeEntry = this.state.freeEntry, 
             partyToday = this.state.partyToday
         } = this.props; 
 
-        if (!guysAllowed || !freeEntry || !partyToday)
+        if (!guysAllowed)
         {
-            return(<Text style={{fontSize: 30, color: "white", top: 400}}>NO GUYS ALLOWED</Text>)
+            return(<Text style={{fontSize: 30, color: "white", top: 600}}>NO GUYS ALLOWED</Text>)
         }
         else
         {
