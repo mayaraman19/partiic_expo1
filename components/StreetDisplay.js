@@ -24,9 +24,9 @@ class StreetDisplay extends Component {
 
     const num = number; 
     return (
-            <>
+            <View style={{alignSelf: "center"}}>
             <TouchableOpacity style={styles.topButton}><View style={{display: "flex", flexDirection: "row"}}><Image style={{marginRight: 30}}source={require("../components/icons/likeIcon.png")} /><Text style={styles.text}>{num}</Text></View></TouchableOpacity>
-            </>
+            </View>
     );
     }
     
