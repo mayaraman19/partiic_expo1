@@ -59,26 +59,25 @@ const Profile = createSwitchNavigator(
 );
 
 
-Profile.navigationOptions =  {
-  tabBarIcon: ({focused}) => (
-    <Ionicons focused = {focused} name = "md-person" size = {40} />
-  ),
-  tabBarOptions: {
-    style: {
-      backgroundColor: '#75F6F2',
-      color: 'red',
-    },
-    paddingVertical: '0%',
-    activeBackgroundColor: '#19DAD4',
-    showIcon: 'true',
-    //tabBarVisible: Profile.navigationOptions,
-    showLabel: false,
-  },
+// Profile.navigationOptions =  {
+//   tabBarIcon: ({focused}) => (
+//     <Ionicons focused = {focused} name = "md-person" size = {40} />
+//   ),
+//   tabBarOptions: {
+//     style: {
+//       backgroundColor: '#75F6F2',
+//       color: 'red',
+//     },
+//     paddingVertical: '0%',
+//     activeBackgroundColor: '#19DAD4',
+//     showIcon: 'true',
+//     showLabel: false,
+//   },
   
-};
+// };
 
 
-Profile.navigationOptions = ({navigation, focused}) => {
+Profile.navigationOptions = ({navigation, navigationOptions}) => {
   let tabBarVisible = true;
   let showIcon = true; 
   if(navigation.state.index == 0 || navigation.state.index == 1 || navigation.state.index == 2) {
@@ -86,6 +85,19 @@ Profile.navigationOptions = ({navigation, focused}) => {
     showIcon = false; 
   }
   return {
+    tabBarIcon: ({focused}) => (
+      <Ionicons focused = {focused} name = "md-person" size = {40} />
+    ),
+    tabBarOptions: {
+      style: {
+        backgroundColor: '#75F6F2',
+        color: 'red',
+      },
+      paddingVertical: '0%',
+      activeBackgroundColor: '#19DAD4',
+      showIcon: 'true',
+      showLabel: false,
+    },
     tabBarVisible,
     showIcon,
   };  
@@ -223,21 +235,22 @@ const tabNavigator = createBottomTabNavigator({
   SafetyStack,
   //ReportStack,
   // PartyCreateStack,
-},
-{
-  tabBarOptions: {
-    style: {
-      backgroundColor: '#75F6F2',
-      color: 'red',
-    },
-    paddingVertical: '0%',
-    activeBackgroundColor: '#19DAD4',
-    showIcon: 'true',
-    showLabel: 'false',
-
-  }
 }
 );
+
+// tabNavigator.navigationOptions = {
+//   tabBarOptions: {
+//     style: {
+//       backgroundColor: '#75F6F2',
+//       color: 'red',
+//     },
+//     paddingVertical: '0%',
+//     activeBackgroundColor: '#19DAD4',
+//     showIcon: 'true',
+//     //tabBarVisible: Profile.navigationOptions,
+//     showLabel: false,
+//   },
+// };
 
 tabNavigator.path = '';
 
