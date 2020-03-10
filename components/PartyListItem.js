@@ -33,7 +33,7 @@ class PartyListItem extends Component {
         const {
             partyName, 
             partyAddress, 
-            partyDate, 
+            partyDate = this.state.partyDate, 
             guysAllowed = this.state.guysAllowed,
             freeEntry = this.state.freeEntry, 
             partyToday = this.state.partyToday

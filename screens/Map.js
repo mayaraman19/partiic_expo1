@@ -88,7 +88,7 @@ export default class Map extends React.Component {
                 return <View key={key}><MapPin partyName={val.name} partyAddress={val.address} partyDate="date"/></View>
             })
             let parties = this.state.dataSource.map((val, key) => {
-                return <View key={key}><PartyListItem partyName={val.name} partyAddress={val.address} partyDate="date" guysAllowed={this.state.guysAllowed} freeEntry={this.state.freeEntry} partyToday={this.state.partyToday}/></View>
+                return <View key={key}><PartyListItem partyName={val.name} partyAddress={val.address} partyDate={val.dateTime} guysAllowed={this.state.guysAllowed} freeEntry={this.state.freeEntry} partyToday={this.state.partyToday}/></View>
             })
 
             // what u gonna see on the screen baby
@@ -105,7 +105,7 @@ export default class Map extends React.Component {
                         {/* <TouchableOpacity style = {styles.filterButton}><Text style = {styles.buttonText}>Free Drinks</Text></TouchableOpacity> */}
                         <TouchableOpacity style = {styles.filterButton} onPress={()=>this.noFreeEntry()}><Text style = {styles.buttonText}>Free Entry</Text></TouchableOpacity>
                     </View>
-                    <ScrollView>
+                    <ScrollView style={{marginBottom: 10}}>
                         {parties}
                     </ScrollView>
 

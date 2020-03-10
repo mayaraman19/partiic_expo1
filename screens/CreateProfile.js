@@ -21,6 +21,7 @@ import {
     Image, 
     Linking, 
     Picker, 
+    TextInput
   } from 'react-native';
 
 import {
@@ -47,7 +48,21 @@ export default class CreateProfile extends React.Component {
               </TouchableOpacity>
               <View style={styles.input}>
               <Text style={styles.label}>First Name </Text>
-                <LoginInputField labelText=' Username: ' />
+                {/* <LoginInputField labelText=' Username: ' /> */}
+                {/* <View style={styles.wrapper}>
+                  <TextInput 
+                  autoCorrect={false}
+                  style={[{color:inputColor}, {width:labelWidth}, styles.inputField]}
+                  // secureTextEntry={inputType === 'password'}
+                  placeholder={labelText}
+                  secureTextEntry={password}
+                  fontSize={myfontSize}
+                  keyboardType={myKeyType}
+                  />
+                </View> */}
+                <LoginInputField labelText=' Password: '/>
+
+                {/* hihihi */}
                 <Text style={styles.label}>Last Name </Text>
                 <LoginInputField labelText=' Password: ' password={true}/>
                 <Text style={styles.label}>Organization (optional) </Text>
@@ -57,7 +72,7 @@ export default class CreateProfile extends React.Component {
                   <Text style={styles.loginText}>Create Profile</Text>
                 </TouchableOpacity>
               </View>
-              <TouchableOpacity onPress={()=>navigation.navigate('MapS')}>
+              <TouchableOpacity onPress={()=>this.props.navigation.navigate('MapS')}>
                 <Text style={styles.login}>I'll do this later...</Text>
               </TouchableOpacity>
               

@@ -67,7 +67,7 @@ export default class MyParties extends React.Component {
           let parties = this.state.dataSource.map((val, key) => {
               return (
                 // keep guysAllowed and whatnot "true" since it should be always displayed
-                <View key={key}><PartyListItem partyName={val.name} partyAddress={val.address} partyDate="date" guysAllowed={true}/></View>
+                <View key={key}><PartyListItem partyName={val.name} partyAddress={val.address} partyDate={val.dateTime} guysAllowed={true}/></View>
               );
           })
 
