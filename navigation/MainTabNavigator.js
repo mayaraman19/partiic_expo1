@@ -1,24 +1,24 @@
-import React from 'react';
-import { Platform, StyleSheet } from 'react-native';
-import { createStackNavigator } from 'react-navigation-stack';
-import {createSwitchNavigator} from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { Ionicons, Entypo } from '@expo/vector-icons';
+import React from "react";
+import { Platform, StyleSheet } from "react-native";
+import { createStackNavigator } from "react-navigation-stack";
+import { createSwitchNavigator } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation-tabs";
+import { Ionicons, Entypo } from "@expo/vector-icons";
 
-import TabBarIcon from '../components/TabBarIcon';
+import TabBarIcon from "../components/TabBarIcon";
 
 //import HomeScreen from '../screens/unused_screens/HomeScreen';
-import Login from '../screens/Login';
-import Safety from '../screens/Safety1';
-import Signup from '../screens/Signup';
-import ProfileScreen from '../screens/Profile';
-import Map from '../screens/Map';
-import Report from '../screens/Report';
-import Party from '../screens/Party';
-import PartyCreate from '../screens/PartyCreate';
-import CreateProfile from '../screens/CreateProfile'; 
-import MyParties from '../screens/MyParties';
-const config = {headerMode: 'none'};
+import Login from "../screens/Login";
+import Safety from "../screens/Safety1";
+import Signup from "../screens/Signup";
+import ProfileScreen from "../screens/Profile";
+import Map from "../screens/Map";
+import Report from "../screens/Report";
+import Party from "../screens/Party";
+import PartyCreate from "../screens/PartyCreate";
+import CreateProfile from "../screens/CreateProfile";
+import MyParties from "../screens/MyParties";
+const config = { headerMode: "none" };
 
 // const config = Platform.select({
 //   web: { headerMode: 'screen' },
@@ -52,12 +52,11 @@ const Profile = createSwitchNavigator(
   {
     LoginS: Login,
     SignupS: Signup,
-    CrProfS: CreateProfile, 
-    ProfileS: ProfileScreen,
+    CrProfS: CreateProfile,
+    ProfileS: ProfileScreen
   },
   config
 );
-
 
 // Profile.navigationOptions =  {
 //   tabBarIcon: ({focused}) => (
@@ -73,110 +72,111 @@ const Profile = createSwitchNavigator(
 //     showIcon: 'true',
 //     showLabel: false,
 //   },
-  
+
 // };
 
-
-Profile.navigationOptions = ({navigation, navigationOptions}) => {
+Profile.navigationOptions = ({ navigation, navigationOptions }) => {
   let tabBarVisible = true;
-  let showIcon = true; 
-  if(navigation.state.index == 0 || navigation.state.index == 1 || navigation.state.index == 2) {
+  let showIcon = true;
+  if (
+    navigation.state.index == 0 ||
+    navigation.state.index == 1 ||
+    navigation.state.index == 2
+  ) {
     tabBarVisible = false;
-    showIcon = false; 
+    showIcon = false;
   }
   return {
-    tabBarIcon: ({focused}) => (
-      <Ionicons focused = {focused} name = "md-person" size = {40} />
+    tabBarIcon: ({ focused }) => (
+      <Ionicons focused={focused} name="md-person" size={40} />
     ),
     tabBarOptions: {
       style: {
-        backgroundColor: '#75F6F2',
-        color: 'red',
+        backgroundColor: "#75F6F2",
+        color: "red"
       },
-      paddingVertical: '0%',
-      activeBackgroundColor: '#19DAD4',
-      showIcon: 'true',
-      showLabel: false,
+      paddingVertical: "0%",
+      activeBackgroundColor: "#19DAD4",
+      showIcon: "true",
+      showLabel: false
     },
     tabBarVisible,
-    showIcon,
-  };  
+    showIcon
+  };
 };
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  // ),
+// tabBarIcon: ({ focused }) => (
+//   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+// ),
 //};
 
 // LeftStack.navigationOptions = {
-  
+
 //   // tabBarIcon: ({ focused }) => (
 //   //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
 //   // ),
 // };
 
-Profile.path = '';
+Profile.path = "";
 
 const MapStack = createStackNavigator(
   {
     MapS: Map,
     PartyScreen: Party,
-    ReportS: Report,
+    ReportS: Report
   },
   config
 );
 
 MapStack.navigationOptions = {
-  tabBarLabel: 'Map',
+  tabBarLabel: "Map",
   // tabBarIcon: ({ focused }) => (
   //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   // ),
-  tabBarIcon: ({focused}) => (
-    <Entypo focused = {focused} name = "location-pin" size = {40} />
-
+  tabBarIcon: ({ focused }) => (
+    <Entypo focused={focused} name="location-pin" size={40} />
   ),
   tabBarOptions: {
     style: {
-      backgroundColor: '#75F6F2',
-      color: 'red',
+      backgroundColor: "#75F6F2",
+      color: "red"
     },
-    paddingVertical: '0%',
-    activeBackgroundColor: '#19DAD4',
-    showIcon: 'true',
-    showLabel: false,
-  },
+    paddingVertical: "0%",
+    activeBackgroundColor: "#19DAD4",
+    showIcon: "true",
+    showLabel: false
+  }
 };
 
-MapStack.path = '';
+MapStack.path = "";
 
 const SafetyStack = createStackNavigator(
   {
-    SafetyS: Safety,
+    SafetyS: Safety
   },
   config
 );
-
 
 SafetyStack.navigationOptions = {
   //tabBarLabel: 'Safety',
   // tabBarIcon: ({ focused }) => (
   //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   // ),
-  tabBarIcon: ({focused}) => (
-    <Entypo focused ={focused} name = "phone" size = {40}/>
+  tabBarIcon: ({ focused }) => (
+    <Entypo focused={focused} name="phone" size={40} />
   ),
   tabBarOptions: {
     style: {
-      backgroundColor: '#75F6F2',
-      color: 'red',
+      backgroundColor: "#75F6F2",
+      color: "red"
     },
-    paddingVertical: '0%',
-    activeBackgroundColor: '#19DAD4',
-    showIcon: 'true',
-    showLabel: false,
-  },
+    paddingVertical: "0%",
+    activeBackgroundColor: "#19DAD4",
+    showIcon: "true",
+    showLabel: false
+  }
 };
 
-SafetyStack.path = '';
+SafetyStack.path = "";
 
 //just for now!! to easily navigate and see the page
 // const ReportStack = createStackNavigator(
@@ -198,33 +198,30 @@ SafetyStack.path = '';
 const PartyCreateStack = createStackNavigator(
   {
     PartyCreateS: PartyCreate,
-    MyPartiesS: MyParties, 
+    MyPartiesS: MyParties
   },
   config
 );
 
 PartyCreateStack.navigationOptions = {
-  tabBarLabel: 'Create Party',
+  tabBarLabel: "Create Party",
   // tabBarIcon: ({ focused }) => (
   //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   // ),
-  tabBarIcon: ({focused}) => (
-    <Entypo focused = {focused} name = "plus" size = {40} />
-
+  tabBarIcon: ({ focused }) => (
+    <Entypo focused={focused} name="plus" size={40} />
   ),
   tabBarOptions: {
     style: {
-      backgroundColor: '#75F6F2',
-      color: 'red',
+      backgroundColor: "#75F6F2",
+      color: "red"
     },
-    paddingVertical: '0%',
-    activeBackgroundColor: '#19DAD4',
-    showIcon: 'true',
-    showLabel: false,
-  },
-  
+    paddingVertical: "0%",
+    activeBackgroundColor: "#19DAD4",
+    showIcon: "true",
+    showLabel: false
+  }
 };
-
 
 const tabNavigator = createBottomTabNavigator({
   //LeftStack,
@@ -232,11 +229,10 @@ const tabNavigator = createBottomTabNavigator({
   Profile,
   MapStack,
   PartyCreateStack,
-  SafetyStack,
+  SafetyStack
   //ReportStack,
   // PartyCreateStack,
-}
-);
+});
 
 // tabNavigator.navigationOptions = {
 //   tabBarOptions: {
@@ -252,6 +248,6 @@ const tabNavigator = createBottomTabNavigator({
 //   },
 // };
 
-tabNavigator.path = '';
+tabNavigator.path = "";
 
 export default tabNavigator;
