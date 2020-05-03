@@ -22,8 +22,8 @@ import {
 class MapPin extends Component {
   render() {
     const { partyName, partyAddress, partyDate} = this.props;
-    var lat = 34.06; //default lat/long in case we hit an error
-    var long = -118.44;
+    var lat = 34.0654631; //default lat/long in case we hit an error
+    var long = -118.4486436;
     axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${partyAddress}&key=AIzaSyAfVkUPSkzptZxFgU3H4iGF3pod9Mvn8mY`)
     .then((response) => {
       if (response.status == 200) {
@@ -40,14 +40,6 @@ class MapPin extends Component {
         // console.log(long);
       }
     });
-      // var data = response.json();
-      // console.log(data);
-      // if(data.status == "OK") {
-        
-      //   lat = data.results.geometry.location.lat;
-      //   long = data.results.geometry.location.lng;
-        
-      // }
     return (
       <View>
         <Marker coordinate={{ latitude: lat, longitude: long}}>
