@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withNavigation } from "react-navigation";
 import MapView, { Marker, Callout } from "react-native-maps";
+import axios from 'axios';
 
 //import { useNavigation } from '@react-navigation/native';
 import {
@@ -20,10 +21,36 @@ import {
 
 class MapPin extends Component {
   render() {
-    const { partyName, partyAddress, partyDate, partyCoordinate } = this.props;
+    const { partyName, partyAddress, partyDate} = this.props;
+    var lat = 34.06; //default lat/long in case we hit an error
+    var long = -118.44;
+    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${partyAddress}&key=AIzaSyAfVkUPSkzptZxFgU3H4iGF3pod9Mvn8mY`)
+    .then((response) => {
+      if (response.status == 200) {
+        lat = response.data.results[0].geometry.location.lat;
+        long = response.data.results[0].geometry.location.lng;
+        console.log('\n\n\n\n');
+        console.log(response.data.results[0].formatted_address);
+        console.log(lat);
+        console.log(long);
+        // lat = response.data.geometry.location.lat;
+        // long = response.data.geometry.location.lng;
+        // console.log("hello");
+        // console.log(lat);
+        // console.log(long);
+      }
+    });
+      // var data = response.json();
+      // console.log(data);
+      // if(data.status == "OK") {
+        
+      //   lat = data.results.geometry.location.lat;
+      //   long = data.results.geometry.location.lng;
+        
+      // }
     return (
       <View>
-        <Marker coordinate={{ latitude: 34.06, longitude: -118.44 }}>
+        <Marker coordinate={{ latitude: lat, longitude: long}}>
           <Callout style={{ width: 200 }}>
             <Text> {partyName} </Text>
             <Text> {partyAddress} </Text>
