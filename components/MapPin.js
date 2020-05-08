@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withNavigation } from "react-navigation";
 import MapView, { Marker, Callout } from "react-native-maps";
-import axios from 'axios';
+import axios from "axios";
 
 //import { useNavigation } from '@react-navigation/native';
 import {
@@ -21,28 +21,36 @@ import {
 
 class MapPin extends Component {
   render() {
-    const { partyName, partyAddress, partyDate} = this.props;
-    var lat = 34.0654631; //default lat/long in case we hit an error
-    var long = -118.4486436;
-    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${partyAddress}&key=AIzaSyAfVkUPSkzptZxFgU3H4iGF3pod9Mvn8mY`)
-    .then((response) => {
-      if (response.status == 200) {
-        lat = response.data.results[0].geometry.location.lat;
-        long = response.data.results[0].geometry.location.lng;
-        console.log('\n\n\n\n');
-        console.log(response.data.results[0].formatted_address);
-        console.log(lat);
-        console.log(long);
-        // lat = response.data.geometry.location.lat;
-        // long = response.data.geometry.location.lng;
-        // console.log("hello");
-        // console.log(lat);
-        // console.log(long);
-      }
-    });
+    const {
+      partyName,
+      partyAddress,
+      partyDate,
+      partyLat,
+      partyLong
+    } = this.props;
+    // var lat = 34.0654631; //default lat/long in case we hit an error
+    // var long = -118.4486436;
+    // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${partyAddress}&key=AIzaSyAfVkUPSkzptZxFgU3H4iGF3pod9Mvn8mY`)
+    // .then((response) => {
+    //   if (response.status == 200) {
+    //     lat = response.data.results[0].geometry.location.lat;
+    //     long = response.data.results[0].geometry.location.lng;
+    //     console.log('\n\n\n\n');
+    //     console.log(response.data.results[0].formatted_address);
+    //     console.log(lat);
+    //     console.log(long);
+    //     // lat = response.data.geometry.location.lat;
+    //     // long = response.data.geometry.location.lng;
+    //     // console.log("hello");
+    //     // console.log(lat);
+    //     // console.log(long);
+    //   }
+    // });
+    console.log("sketcy props"), console.log(partyLat), console.log(partyLong);
     return (
       <View>
-        <Marker coordinate={{ latitude: lat, longitude: long}}>
+        <Marker coordinate={{ latitude: 34.0654631, longitude: -118.4486436 }}>
+          {/* <Marker coordinate={{ latitude: partyLat, longitude: partyLong }}> */}
           <Callout style={{ width: 200 }}>
             <Text> {partyName} </Text>
             <Text> {partyAddress} </Text>

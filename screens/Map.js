@@ -16,6 +16,7 @@ import { AuthSession } from "expo";
 import PartyListItem from "../components/PartyListItem";
 import MapPin from "../components/MapPin";
 import { tsConstructorType } from "@babel/types";
+import axios from "axios";
 
 export default class Map extends React.Component {
   constructor(props) {
@@ -29,6 +30,22 @@ export default class Map extends React.Component {
     };
   }
 
+  // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${partyAddress}&key=AIzaSyAfVkUPSkzptZxFgU3H4iGF3pod9Mvn8mY`)
+  //   .then((response) => {
+  //     if (response.status == 200) {
+  //       lat = response.data.results[0].geometry.location.lat;
+  //       long = response.data.results[0].geometry.location.lng;
+  //       console.log('\n\n\n\n');
+  //       console.log(response.data.results[0].formatted_address);
+  //       console.log(lat);
+  //       console.log(long);
+  //       // lat = response.data.geometry.location.lat;
+  //       // long = response.data.geometry.location.lng;
+  //       // console.log("hello");
+  //       // console.log(lat);
+  //       // console.log(long);
+  //     }
+  //   });
   componentDidMount() {
     return fetch("http://ucla-partic.herokuapp.com/")
       .then(response => response.json())
@@ -55,6 +72,43 @@ export default class Map extends React.Component {
     this.setState({ partyToday: !this.state.partyToday });
   }
 
+  getAddressCoords(partyAddress) {
+    axios
+      .get(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${partyAddress}&key=AIzaSyAfVkUPSkzptZxFgU3H4iGF3pod9Mvn8mY`
+      )
+      .then(response => {
+        if (response.status == 200) {
+          //var lat = response.data.results[0].geometry.location.lat;
+          //var long = response.data.results[0].geometry.location.lng;
+          console.log("\n\n\n\n");
+          console.log(response.data.results[0].formatted_address);
+          // this.setState(prevState => ({
+          //   dataSource: {
+          //     ...prevState.dataSource,
+          //     blehLat: response.data.results[0].geometry.location.lat,
+          //     blehLong: response.data.results[0].geometry.location.lng
+          //   }
+          // }));
+          // console.log(this.state.dataSource.blehLat);
+          // console.log(this.state.dataSource.blehLong);
+          let bleh = {
+            blehLat: response.data.results[0].geometry.location.lat,
+            blehLong: response.data.results[0].geometry.location.lng
+          };
+          //console.log(bleh.blehLat);
+          //console.log(bleh.blehLong);
+          console.log(bleh);
+          return "6";
+          // lat = response.data.geometry.location.lat;
+          // long = response.data.geometry.location.lng;
+          // console.log("hello");
+          // console.log(lat);
+          // console.log(long);
+        }
+      });
+  }
+
   render() {
     var bColor = "transparent";
 
@@ -72,12 +126,47 @@ export default class Map extends React.Component {
       );
     } else {
       let pins = this.state.dataSource.map((val, key) => {
+        // console.log("bro wtf");
+        // console.log(this.getAddressCoords(val.address));
+        // var currentLat = 1;
+        // var currentLong = 1;
+        axios
+          .get(
+            `https://maps.googleapis.com/maps/api/geocode/json?address=${val.address}&key=AIzaSyAfVkUPSkzptZxFgU3H4iGF3pod9Mvn8mY`
+          )
+          .then(response => {
+            if (response.status == 200) {
+              console.log("\n\n\n\n");
+              console.log(response.data.results[0].formatted_address);
+              let bleh = {
+                blehLat: response.data.results[0].geometry.location.lat,
+                blehLong: response.data.results[0].geometry.location.lng
+              };
+              //console.log(bleh.blehLat);
+              //console.log(bleh.blehLong);
+              console.log("bish");
+              console.log(bleh);
+              // this.setState({
+              //   currentLat: bleh.blehLat,
+              //   currentLong: bleh.blehLong
+              // });
+              //currentLat = bleh.blehLat;
+              //currentLong = bleh.blehLong;
+            }
+          });
+        // console.log("broski");
+        // console.log(this.state.currentLat);
+        // console.log(this.state.currentLong);
+        console.log(";lskdfj");
+        // console.log(this.state.val.killLat);
         return (
           <View key={key}>
             <MapPin
               partyName={val.name}
               partyAddress={val.address}
               partyDate={val.dateTime}
+              //partyLat={this.state.val.killLat}
+              //partyLong={this.state.val.killLong}
             />
           </View>
         );
