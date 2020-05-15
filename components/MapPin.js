@@ -46,11 +46,11 @@ class MapPin extends Component {
     //     // console.log(long);
     //   }
     // });
-    console.log("sketcy props"), console.log(partyLat), console.log(partyLong);
+    // console.log("sketcy props"), console.log(partyLat), console.log(partyLong);
     return (
       <View>
-        <Marker coordinate={{ latitude: 34.0654631, longitude: -118.4486436 }}>
-          {/* <Marker coordinate={{ latitude: partyLat, longitude: partyLong }}> */}
+        {/* <Marker coordinate={{ latitude: 34.0654631, longitude: -118.4486436 }}> */}
+        <Marker coordinate={{ latitude: partyLat, longitude: partyLong }}>
           <Callout style={{ width: 200 }}>
             <Text> {partyName} </Text>
             <Text> {partyAddress} </Text>
