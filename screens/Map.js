@@ -16,26 +16,91 @@ import { AuthSession } from "expo";
 import PartyListItem from "../components/PartyListItem";
 import MapPin from "../components/MapPin";
 import { tsConstructorType } from "@babel/types";
+import axios from "axios";
 
 export default class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: true,
+      isLoadingTwo: true,
+      isLoadingThree: true,
       dataSource: null,
       guysAllowed: true,
       freeEntry: true,
-      partyToday: true
+      partyToday: true,
+      purtyLats: null,
+      purtyLongs: null,
+      partyLongs: null
     };
   }
 
+  // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${partyAddress}&key=AIzaSyAfVkUPSkzptZxFgU3H4iGF3pod9Mvn8mY`)
+  //   .then((response) => {
+  //     if (response.status == 200) {
+  //       lat = response.data.results[0].geometry.location.lat;
+  //       long = response.data.results[0].geometry.location.lng;
+  //       console.log('\n\n\n\n');
+  //       console.log(response.data.results[0].formatted_address);
+  //       console.log(lat);
+  //       console.log(long);
+  //       // lat = response.data.geometry.location.lat;
+  //       // long = response.data.geometry.location.lng;
+  //       // console.log("hello");
+  //       // console.log(lat);
+  //       // console.log(long);
+  //     }
+  //   });
   componentDidMount() {
-    return fetch("http://ucla-partic.herokuapp.com/")
+    this.getParties();
+  }
+
+  getParties() {
+    fetch("http://ucla-partic.herokuapp.com/")
       .then(response => response.json())
       .then(responseJson => {
         this.setState({
           isLoading: false,
           dataSource: responseJson
+        });
+
+        let allLats = {};
+        let allLongs = {};
+
+        console.log("length???");
+        console.log(responseJson.length);
+        let oohbaaby = responseJson.length;
+
+        responseJson.map((val, key) => {
+          let myitem = this.state.dataSource[key].address;
+          console.log("myitem");
+          console.log(myitem);
+          axios
+            .get(
+              `https://maps.googleapis.com/maps/api/geocode/json?address=${myitem}&key=AIzaSyAfVkUPSkzptZxFgU3H4iGF3pod9Mvn8mY`
+            )
+            .then(response => {
+              if (response.status == 200) {
+                console.log(response.data.results[0].formatted_address);
+                let blehLat = response.data.results[0].geometry.location.lat;
+                let blehLong = response.data.results[0].geometry.location.lng;
+                allLats[key] = blehLat;
+                allLongs[key] = blehLong;
+                console.log(allLats[key]);
+                this.setState({
+                  partyLongs: blehLong,
+                  isLoadingTwo: false
+                });
+                if (key == oohbaaby - 1) {
+                  this.setState({
+                    purtyLats: allLats,
+                    purtyLongs: allLongs,
+                    isLoadingThree: false
+                  });
+                }
+                console.log("buh bye");
+              }
+            });
         });
       })
       .catch(error => {
@@ -64,13 +129,19 @@ export default class Map extends React.Component {
 
     const mybColor = bColor;
 
-    if (this.state.isLoading) {
+    if (
+      this.state.isLoading ||
+      // this.state.isLoadingTwo ||
+      this.state.isLoadingThree
+    ) {
       return (
         <View>
           <ActivityIndicator />
         </View>
       );
     } else {
+      console.log("helllllsjdfa;lkdfj");
+      console.log(this.state.purtyLats);
       let pins = this.state.dataSource.map((val, key) => {
         return (
           <View key={key}>
@@ -78,6 +149,8 @@ export default class Map extends React.Component {
               partyName={val.name}
               partyAddress={val.address}
               partyDate={val.dateTime}
+              partyLat={this.state.purtyLats[key]}
+              partyLong={this.state.purtyLongs[key]}
             />
           </View>
         );
