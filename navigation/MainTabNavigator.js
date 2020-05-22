@@ -18,6 +18,7 @@ import Party from "../screens/Party";
 import PartyCreate from "../screens/PartyCreate";
 import CreateProfile from "../screens/CreateProfile";
 import MyParties from "../screens/MyParties";
+import Logout from '../screens/Logout';
 const config = { headerMode: "none" };
 
 // const config = Platform.select({
@@ -53,7 +54,8 @@ const Profile = createSwitchNavigator(
     LoginS: Login,
     SignupS: Signup,
     CrProfS: CreateProfile,
-    ProfileS: ProfileScreen
+    ProfileS: ProfileScreen,
+    Logout: Logout,
   },
   config
 );

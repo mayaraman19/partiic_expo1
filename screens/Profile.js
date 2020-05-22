@@ -99,6 +99,12 @@ export default class ProfileScreen extends React.Component {
                 >
                   <Text>Edit</Text>
                 </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.edit}
+                  onPress={() => this.props.navigation.navigate('Logout')}
+                >
+                  <Text>Log Out</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </ImageBackground>
