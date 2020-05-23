@@ -56,8 +56,6 @@ export default class Logout extends React.Component {
                     <Text style={styles.jktext}>Just kidding...</Text>
                 </TouchableOpacity>
             </View>
-            
-
         );
     }
 }
