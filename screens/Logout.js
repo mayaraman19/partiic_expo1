@@ -22,24 +22,17 @@ export default class Logout extends React.Component {
     constructor(props) {
         super(props);
     }
-    // const alertt = () => 
-    //     Alert.alert(
-    //     "Alert Title",
-    //     "My Alert Msg",
-    //     [
-    //         {
-    //         text: "Ask me later",
-    //         onPress: () => console.log("Ask me later pressed")
-    //         },
-    //         {
-    //         text: "Cancel",
-    //         onPress: () => console.log("Cancel Pressed"),
-    //         style: "cancel"
-    //         },
-    //         { text: "OK", onPress: () => console.log("OK Pressed") }
-    //     ],
-    //     { cancelable: false }
-    //     );
+    showAlert = () => {
+        Alert.alert(
+            'Are you sure?',
+            '',
+            [
+                {text: 'Yes', onPress: () => this.props.navigation.navigate('LoginS')},
+                {text: 'No', onPress: () => this.props.navigation.navigate('ProfileS')}
+            ],
+            {cancelable: false}
+        );
+    }
     render() {
         return (
             <View 
@@ -47,7 +40,7 @@ export default class Logout extends React.Component {
             >
                 <TouchableOpacity 
                 style={styles.button}
-                onPress={() => this.props.navigation.navigate('LoginS')}>
+                onPress={this.showAlert}>
                     <Text style={styles.lgtext}>LOG OUT</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
